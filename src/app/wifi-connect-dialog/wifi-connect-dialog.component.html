@@ -1,0 +1,21 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
+        </ion-buttons>
+        <ion-title>Connect to Wifi</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="confirm()">Confirm</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+    <ion-item>
+        <ion-label position="stacked">SSID</ion-label>
+        <ion-input aria-disabled="true" placeholder="Enter your password"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="stacked">Password</ion-label>
+        <ion-input [(ngModel)]="password" placeholder="Enter your password"></ion-input>
+    </ion-item>
+</ion-content>

@@ -1,0 +1,10 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title> List of Wifi SSID </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-list *ngFor="let ssid of ssids">
+        <ion-item *ngIf="ssid.SSID !== ''" (click)="connect(ssid.SSID)">{{ ssid.SSID }}</ion-item>
+    </ion-list>
+</ion-content>
