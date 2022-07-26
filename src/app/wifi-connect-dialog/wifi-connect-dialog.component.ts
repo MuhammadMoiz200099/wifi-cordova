@@ -21,5 +21,9 @@ export class WifiConnectDialogComponent {
     return this.modalCtrl.dismiss({ ssid: this.ssid, password: this.password}, 'confirm');
   }
 
+  handleInput(value) {
+    this.password = value;
+  }
+
 
 }

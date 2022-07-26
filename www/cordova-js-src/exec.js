@@ -19,96 +19,141 @@
  *
 */
 
-/*jslint sloppy:true, plusplus:true*/
-/*global require, module, console */
-
-var cordova = require('cordova');
-var execProxy = require('cordova/exec/proxy');
-
 /**
- * Execute a cordova command.  It is up to the native side whether this action
- * is synchronous or asynchronous.  The native side can return:
- *      Synchronous: PluginResult object as a JSON string
- *      Asynchronous: Empty string ""
- * If async, the native side will cordova.callbackSuccess or cordova.callbackError,
- * depending upon the result of the action.
- *
- * @param {Function} success    The success callback
- * @param {Function} fail       The fail callback
- * @param {String} service      The name of the service to use
- * @param {String} action       Action to be run in cordova
- * @param {String[]} [args]     Zero or more arguments to pass to the method
+ * Creates the exec bridge used to notify the native code of
+ * commands.
  */
-module.exports = function (success, fail, service, action, args) {
+var cordova = require('cordova');
+var utils = require('cordova/utils');
+var base64 = require('cordova/base64');
 
-    var proxy = execProxy.get(service, action);
-
-    args = args || [];
-
-    if (proxy) {
-        
-        var callbackId = service + cordova.callbackId++;
-        
-        if (typeof success === "function" || typeof fail === "function") {
-            cordova.callbacks[callbackId] = {success: success, fail: fail};
+function massageArgsJsToNative (args) {
+    if (!args || utils.typeName(args) !== 'Array') {
+        return args;
+    }
+    var ret = [];
+    args.forEach(function (arg, i) {
+        if (utils.typeName(arg) === 'ArrayBuffer') {
+            ret.push({
+                CDVType: 'ArrayBuffer',
+                data: base64.fromArrayBuffer(arg)
+            });
+        } else {
+            ret.push(arg);
         }
-        try {
+    });
+    return ret;
+}
 
-            
+function massageMessageNativeToJs (message) {
+    if (message.CDVType === 'ArrayBuffer') {
+        var stringToArrayBuffer = function (str) {
+            var ret = new Uint8Array(str.length);
+            for (var i = 0; i < str.length; i++) {
+                ret[i] = str.charCodeAt(i);
+            }
+            return ret.buffer;
+        };
+        var base64ToArrayBuffer = function (b64) {
+            return stringToArrayBuffer(atob(b64)); // eslint-disable-line no-undef
+        };
+        message = base64ToArrayBuffer(message.data);
+    }
+    return message;
+}
 
-            // callbackOptions param represents additional optional parameters command could pass back, like keepCallback or
-            // custom callbackId, for example {callbackId: id, keepCallback: true, status: cordova.callbackStatus.JSON_EXCEPTION }
-            var onSuccess = function (result, callbackOptions) {
-                callbackOptions = callbackOptions || {};
-                var callbackStatus;
-                // covering both undefined and null.
-                // strict null comparison was causing callbackStatus to be undefined
-                // and then no callback was called because of the check in cordova.callbackFromNative
-                // see CB-8996 Mobilespec app hang on windows
-                if (callbackOptions.status !== undefined && callbackOptions.status !== null) {
-                    callbackStatus = callbackOptions.status;
-                }
-                else {
-                    callbackStatus = cordova.callbackStatus.OK;
-                }
-                cordova.callbackSuccess(callbackOptions.callbackId || callbackId,
-                    {
-                        status: callbackStatus,
-                        message: result,
-                        keepCallback: callbackOptions.keepCallback || false
-                    });
-            };
-            var onError = function (err, callbackOptions) {
-                callbackOptions = callbackOptions || {};
-                var callbackStatus;
-                // covering both undefined and null.
-                // strict null comparison was causing callbackStatus to be undefined
-                // and then no callback was called because of the check in cordova.callbackFromNative
-                // note: status can be 0
-                if (callbackOptions.status !== undefined && callbackOptions.status !== null) {
-                    callbackStatus = callbackOptions.status;
-                }
-                else {
-                    callbackStatus = cordova.callbackStatus.OK;
-                }
-                cordova.callbackError(callbackOptions.callbackId || callbackId,
-                {
-                    status: callbackStatus,
-                    message: err,
-                    keepCallback: callbackOptions.keepCallback || false
-                });
-            };
-            proxy(onSuccess, onError, args);
-
-        } catch (e) {
-            console.log("Exception calling native with command :: " + service + " :: " + action  + " ::exception=" + e);
-        }
+function convertMessageToArgsNativeToJs (message) {
+    var args = [];
+    if (!message || !Object.prototype.hasOwnProperty.call(message, 'CDVType')) {
+        args.push(message);
+    } else if (message.CDVType === 'MultiPart') {
+        message.messages.forEach(function (e) {
+            args.push(massageMessageNativeToJs(e));
+        });
     } else {
+        args.push(massageMessageNativeToJs(message));
+    }
+    return args;
+}
 
-        console.log("Error: exec proxy not found for :: " + service + " :: " + action);
-        
-        if(typeof fail === "function" ) {
-            fail("Missing Command Error");
-        }
+var iOSExec = function () {
+    var successCallback, failCallback, service, action, actionArgs;
+    var callbackId = null;
+    if (typeof arguments[0] !== 'string') {
+        // FORMAT ONE
+        successCallback = arguments[0];
+        failCallback = arguments[1];
+        service = arguments[2];
+        action = arguments[3];
+        actionArgs = arguments[4];
+
+        // Since we need to maintain backwards compatibility, we have to pass
+        // an invalid callbackId even if no callback was provided since plugins
+        // will be expecting it. The Cordova.exec() implementation allocates
+        // an invalid callbackId and passes it even if no callbacks were given.
+        callbackId = 'INVALID';
+    } else {
+   	    throw new Error('The old format of this exec call has been removed (deprecated since 2.1). Change to: ' + // eslint-disable-line
+            'cordova.exec(null, null, \'Service\', \'action\', [ arg1, arg2 ]);');
+    }
+
+    // If actionArgs is not provided, default to an empty array
+    actionArgs = actionArgs || [];
+
+    // Register the callbacks and add the callbackId to the positional
+    // arguments if given.
+    if (successCallback || failCallback) {
+        callbackId = service + cordova.callbackId++;
+        cordova.callbacks[callbackId] =
+            { success: successCallback, fail: failCallback };
+    }
+
+    actionArgs = massageArgsJsToNative(actionArgs);
+
+    // CB-10133 DataClone DOM Exception 25 guard (fast function remover)
+    var command = [callbackId, service, action, JSON.parse(JSON.stringify(actionArgs))];
+    window.webkit.messageHandlers.cordova.postMessage(command);
+};
+
+iOSExec.nativeCallback = function (callbackId, status, message, keepCallback, debug) {
+    var success = status === 0 || status === 1;
+    var args = convertMessageToArgsNativeToJs(message);
+    Promise.resolve().then(function () {
+        cordova.callbackFromNative(callbackId, success, status, args, keepCallback); // eslint-disable-line
+    });
+};
+
+// for backwards compatibility
+iOSExec.nativeEvalAndFetch = function (func) {
+    try {
+        func();
+    } catch (e) {
+        console.log(e);
     }
 };
+
+// Proxy the exec for bridge changes. See CB-10106
+
+function cordovaExec () {
+    var cexec = require('cordova/exec');
+    var cexec_valid = (typeof cexec.nativeFetchMessages === 'function') && (typeof cexec.nativeEvalAndFetch === 'function') && (typeof cexec.nativeCallback === 'function');
+    return (cexec_valid && execProxy !== cexec) ? cexec : iOSExec;
+}
+
+function execProxy () {
+    cordovaExec().apply(null, arguments);
+}
+
+execProxy.nativeFetchMessages = function () {
+    return cordovaExec().nativeFetchMessages.apply(null, arguments);
+};
+
+execProxy.nativeEvalAndFetch = function () {
+    return cordovaExec().nativeEvalAndFetch.apply(null, arguments);
+};
+
+execProxy.nativeCallback = function () {
+    return cordovaExec().nativeCallback.apply(null, arguments);
+};
+
+module.exports = execProxy;

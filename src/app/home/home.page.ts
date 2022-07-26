@@ -23,14 +23,23 @@ export class HomePage implements OnInit {
     this.platform.ready().then(() => {
       this.presentToast("SUCCESS: Device is Ready");
       if (this.platform.is('cordova')) {
-        this.wifiWizard2.scan().then((res) => {
+        // this.wifiWizard2.scan().then((res) => {
+        //   this.ssids = res
+        //   console.log(res);
+        //   this.presentToast("SUCCESS: Scaned all near by networks");
+        // }).catch((err) => {
+        //   this.presentToast(err);
+        //   this.presentToast("ERROR: Cannot Scan WiFI");
+        // });
+        this.wifiWizard2.getConnectedSSID().then((res) => {
           this.ssids = res
           console.log(res);
-          this.presentToast("SUCCESS: Scaned all near by networks");
+          this.presentToast(JSON.stringify(res));
         }).catch((err) => {
-          this.presentToast(err);
           this.presentToast("ERROR: Cannot Scan WiFI");
+          this.presentToast(JSON.stringify(err));
         });
+
       }
     }).catch((err) => {
       this.presentToast(err);

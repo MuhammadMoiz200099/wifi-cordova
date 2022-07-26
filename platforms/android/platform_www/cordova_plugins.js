@@ -41,6 +41,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
+      "id": "com.pylonproducts.wifiwizard.WifiWizard",
+      "file": "plugins/com.pylonproducts.wifiwizard/www/WifiWizard.js",
+      "pluginId": "com.pylonproducts.wifiwizard",
+      "clobbers": [
+        "window.WifiWizard"
+      ]
+    },
+    {
       "id": "es6-promise-plugin.Promise",
       "file": "plugins/es6-promise-plugin/www/promise.js",
       "pluginId": "es6-promise-plugin",
@@ -61,6 +69,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-splashscreen": "5.0.2",
     "cordova-plugin-ionic-webview": "5.0.0",
     "cordova-plugin-ionic-keyboard": "2.2.0",
+    "com.pylonproducts.wifiwizard": "0.2.11",
     "es6-promise-plugin": "4.1.0",
     "wifiwizard2": "3.1.1"
   };

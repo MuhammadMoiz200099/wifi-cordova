@@ -49,6 +49,10 @@
               "count": 1
             },
             {
+              "xml": "<feature name=\"WifiWizard\"><param name=\"ios-package\" value=\"NXWWifiWizard\" /></feature>",
+              "count": 1
+            },
+            {
               "xml": "<feature name=\"WifiWizard2\"><param name=\"ios-package\" value=\"WifiWizard2\" /></feature>",
               "count": 1
             }
@@ -117,6 +121,9 @@
     "cordova-plugin-statusbar": {
       "PACKAGE_NAME": "io.ionic.starter"
     },
+    "com.pylonproducts.wifiwizard": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
     "es6-promise-plugin": {
       "PACKAGE_NAME": "io.ionic.starter"
     },
@@ -175,6 +182,14 @@
       ]
     },
     {
+      "id": "com.pylonproducts.wifiwizard.WifiWizard",
+      "file": "plugins/com.pylonproducts.wifiwizard/www/WifiWizard.js",
+      "pluginId": "com.pylonproducts.wifiwizard",
+      "clobbers": [
+        "window.WifiWizard"
+      ]
+    },
+    {
       "id": "es6-promise-plugin.Promise",
       "file": "plugins/es6-promise-plugin/www/promise.js",
       "pluginId": "es6-promise-plugin",
@@ -195,6 +210,7 @@
     "cordova-plugin-ionic-webview": "5.0.0",
     "cordova-plugin-splashscreen": "5.0.2",
     "cordova-plugin-statusbar": "2.4.2",
+    "com.pylonproducts.wifiwizard": "0.2.11",
     "es6-promise-plugin": "4.1.0",
     "wifiwizard2": "3.1.1"
   }

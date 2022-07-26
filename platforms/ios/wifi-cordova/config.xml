@@ -43,13 +43,16 @@
         <param name="ios-package" value="CDVStatusBar" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="WifiWizard">
+        <param name="ios-package" value="NXWWifiWizard" />
+    </feature>
     <feature name="WifiWizard2">
         <param name="ios-package" value="WifiWizard2" />
     </feature>
     <name>wifi-cordova</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content original-src="index.html" src="http://192.168.10.8:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />

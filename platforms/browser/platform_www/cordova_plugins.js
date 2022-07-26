@@ -51,6 +51,14 @@ module.exports = [
         "runs": true
     },
     {
+        "file": "plugins/com.pylonproducts.wifiwizard/www/WifiWizard.js",
+        "id": "com.pylonproducts.wifiwizard.WifiWizard",
+        "pluginId": "com.pylonproducts.wifiwizard",
+        "clobbers": [
+            "window.WifiWizard"
+        ]
+    },
+    {
         "file": "plugins/es6-promise-plugin/www/promise.js",
         "id": "es6-promise-plugin.Promise",
         "pluginId": "es6-promise-plugin",
@@ -73,6 +81,7 @@ module.exports.metadata =
     "cordova-plugin-ionic-webview": "5.0.0",
     "cordova-plugin-splashscreen": "5.0.2",
     "cordova-plugin-statusbar": "2.4.2",
+    "com.pylonproducts.wifiwizard": "0.2.11",
     "es6-promise-plugin": "4.1.0",
     "wifiwizard2": "3.1.1"
 }
