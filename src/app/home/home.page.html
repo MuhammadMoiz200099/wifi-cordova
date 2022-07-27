@@ -4,7 +4,12 @@
     </ion-toolbar>
 </ion-header>
 <ion-content>
-    <ion-list *ngFor="let ssid of ssids">
-        <ion-item *ngIf="ssid.SSID !== ''" (click)="connect(ssid.SSID)">{{ ssid.SSID }}</ion-item>
-    </ion-list>
+    <div *ngIf="isloading">
+        Loading....
+    </div>
+    <div *ngIf="!isloading">
+        <ion-list *ngFor="let network of networks">
+            <ion-item *ngIf="network.SSID != ''" (click)="connect(network.SSID)">{{ network.SSID }}</ion-item>
+        </ion-list>
+    </div>
 </ion-content>

@@ -6,14 +6,12 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-
-import { WifiWizard2 } from '@awesome-cordova-plugins/wifi-wizard-2/ngx';
-import { WifiConnectDialogComponent } from './wifi-connect-dialog/wifi-connect-dialog.component';
+import { Hotspot } from "@ionic-native/hotspot/ngx";
 
 @NgModule({
-  declarations: [AppComponent, WifiConnectDialogComponent],
+  declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
-  providers: [WifiWizard2, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, Hotspot],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

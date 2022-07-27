@@ -1,6 +1,14 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
   module.exports = [
     {
+      "id": "cordova-plugin-hotspot.HotSpotPlugin",
+      "file": "plugins/cordova-plugin-hotspot/www/HotSpotPlugin.js",
+      "pluginId": "cordova-plugin-hotspot",
+      "clobbers": [
+        "cordova.plugins.hotspot"
+      ]
+    },
+    {
       "id": "cordova-plugin-statusbar.statusbar",
       "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
       "pluginId": "cordova-plugin-statusbar",
@@ -39,38 +47,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "window.Keyboard"
       ]
-    },
-    {
-      "id": "com.pylonproducts.wifiwizard.WifiWizard",
-      "file": "plugins/com.pylonproducts.wifiwizard/www/WifiWizard.js",
-      "pluginId": "com.pylonproducts.wifiwizard",
-      "clobbers": [
-        "window.WifiWizard"
-      ]
-    },
-    {
-      "id": "es6-promise-plugin.Promise",
-      "file": "plugins/es6-promise-plugin/www/promise.js",
-      "pluginId": "es6-promise-plugin",
-      "runs": true
-    },
-    {
-      "id": "wifiwizard2.WifiWizard2",
-      "file": "plugins/wifiwizard2/www/WifiWizard2.js",
-      "pluginId": "wifiwizard2",
-      "clobbers": [
-        "window.WifiWizard2"
-      ]
     }
   ];
   module.exports.metadata = {
+    "cordova-plugin-hotspot": "1.2.10",
     "cordova-plugin-statusbar": "2.4.2",
     "cordova-plugin-device": "2.0.2",
     "cordova-plugin-splashscreen": "5.0.2",
     "cordova-plugin-ionic-webview": "5.0.0",
-    "cordova-plugin-ionic-keyboard": "2.2.0",
-    "com.pylonproducts.wifiwizard": "0.2.11",
-    "es6-promise-plugin": "4.1.0",
-    "wifiwizard2": "3.1.1"
+    "cordova-plugin-ionic-keyboard": "2.2.0"
   };
 });

@@ -1,5 +1,3 @@
 {
-    "WebKit.framework": 1,
-    "NetworkExtension.framework": 1,
-    "SystemConfiguration.framework": 1
+    "WebKit.framework": 1
 }

@@ -1,111 +1,16 @@
 "use strict";
 (self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["vendor"],{
 
-/***/ 5400:
-/*!*******************************************************************************************!*\
-  !*** ./node_modules/@awesome-cordova-plugins/core/__ivy_ngcc__/awesome-cordova-plugin.js ***!
-  \*******************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "AwesomeCordovaNativePlugin": () => (/* binding */ AwesomeCordovaNativePlugin)
-/* harmony export */ });
-/* harmony import */ var _decorators_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./decorators/common */ 2474);
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./util */ 8219);
-
-
-
-var AwesomeCordovaNativePlugin =
-/** @class */
-function () {
-  function AwesomeCordovaNativePlugin() {}
-  /**
-   * Returns a boolean that indicates whether the plugin is installed
-   *
-   * @returns {boolean}
-   */
-
-
-  AwesomeCordovaNativePlugin.installed = function () {
-    var isAvailable = (0,_decorators_common__WEBPACK_IMPORTED_MODULE_0__.checkAvailability)(this.pluginRef) === true;
-    return isAvailable;
-  };
-  /**
-   * Returns the original plugin object
-   */
-
-
-  AwesomeCordovaNativePlugin.getPlugin = function () {
-    if (typeof window !== 'undefined') {
-      return (0,_util__WEBPACK_IMPORTED_MODULE_1__.get)(window, this.pluginRef);
-    }
-
-    return null;
-  };
-  /**
-   * Returns the plugin's name
-   */
-
-
-  AwesomeCordovaNativePlugin.getPluginName = function () {
-    var pluginName = this.pluginName;
-    return pluginName;
-  };
-  /**
-   * Returns the plugin's reference
-   */
-
-
-  AwesomeCordovaNativePlugin.getPluginRef = function () {
-    var pluginRef = this.pluginRef;
-    return pluginRef;
-  };
-  /**
-   * Returns the plugin's install name
-   */
-
-
-  AwesomeCordovaNativePlugin.getPluginInstallName = function () {
-    var plugin = this.plugin;
-    return plugin;
-  };
-  /**
-   * Returns the plugin's supported platforms
-   */
-
-
-  AwesomeCordovaNativePlugin.getSupportedPlatforms = function () {
-    var platform = this.platforms;
-    return platform;
-  };
-
-  AwesomeCordovaNativePlugin.pluginName = '';
-  AwesomeCordovaNativePlugin.pluginRef = '';
-  AwesomeCordovaNativePlugin.plugin = '';
-  AwesomeCordovaNativePlugin.repo = '';
-  AwesomeCordovaNativePlugin.platforms = [];
-  AwesomeCordovaNativePlugin.install = '';
-  return AwesomeCordovaNativePlugin;
-}();
-
-
-
-/***/ }),
-
-/***/ 3512:
-/*!******************************************************************************!*\
-  !*** ./node_modules/@awesome-cordova-plugins/core/__ivy_ngcc__/bootstrap.js ***!
-  \******************************************************************************/
+/***/ 8544:
+/*!*******************************************************************!*\
+  !*** ./node_modules/@ionic-native/core/__ivy_ngcc__/bootstrap.js ***!
+  \*******************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "checkReady": () => (/* binding */ checkReady)
 /* harmony export */ });
-/**
- *
- */
 function checkReady() {
   if (typeof process === 'undefined') {
     var win_1 = typeof window !== 'undefined' ? window : {};
@@ -130,10 +35,10 @@ function checkReady() {
 
 /***/ }),
 
-/***/ 2474:
-/*!**************************************************************************************!*\
-  !*** ./node_modules/@awesome-cordova-plugins/core/__ivy_ngcc__/decorators/common.js ***!
-  \**************************************************************************************/
+/***/ 8467:
+/*!***************************************************************************!*\
+  !*** ./node_modules/@ionic-native/core/__ivy_ngcc__/decorators/common.js ***!
+  \***************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -163,10 +68,6 @@ var ERR_CORDOVA_NOT_AVAILABLE = {
 var ERR_PLUGIN_NOT_INSTALLED = {
   error: 'plugin_not_installed'
 };
-/**
- * @param callback
- */
-
 function getPromise(callback) {
   var tryNativePromise = function () {
     if (Promise) {
@@ -194,13 +95,6 @@ function getPromise(callback) {
 
   return tryNativePromise();
 }
-/**
- * @param pluginObj
- * @param methodName
- * @param args
- * @param opts
- */
-
 function wrapPromise(pluginObj, methodName, args, opts) {
   if (opts === void 0) {
     opts = {};
@@ -242,12 +136,6 @@ function wrapPromise(pluginObj, methodName, args, opts) {
 
   return p;
 }
-/**
- * @param pluginObj
- * @param methodName
- * @param args
- * @param opts
- */
 
 function wrapOtherPromise(pluginObj, methodName, args, opts) {
   if (opts === void 0) {
@@ -270,13 +158,6 @@ function wrapOtherPromise(pluginObj, methodName, args, opts) {
     }
   });
 }
-/**
- * @param pluginObj
- * @param methodName
- * @param args
- * @param opts
- */
-
 
 function wrapObservable(pluginObj, methodName, args, opts) {
   if (opts === void 0) {
@@ -331,7 +212,6 @@ function wrapObservable(pluginObj, methodName, args, opts) {
 }
 /**
  * Wrap the event with an observable
- *
  * @private
  * @param event event name
  * @param element The element to attach the event listener to
@@ -343,15 +223,9 @@ function wrapEventObservable(event, element) {
   element = typeof window !== 'undefined' && element ? get(window, element) : element || (typeof window !== 'undefined' ? window : {});
   return (0,rxjs__WEBPACK_IMPORTED_MODULE_1__.fromEvent)(element, event);
 }
-/**
- * @param plugin
- * @param methodName
- * @param pluginName
- */
-
 
 function checkAvailability(plugin, methodName, pluginName) {
-  var pluginRef, pluginPackage;
+  var pluginRef, pluginInstance, pluginPackage;
 
   if (typeof plugin === 'string') {
     pluginRef = plugin;
@@ -361,7 +235,7 @@ function checkAvailability(plugin, methodName, pluginName) {
     pluginPackage = plugin.constructor.getPluginInstallName();
   }
 
-  var pluginInstance = getPlugin(pluginRef);
+  pluginInstance = getPlugin(pluginRef);
 
   if (!pluginInstance || !!methodName && typeof pluginInstance[methodName] === 'undefined') {
     if (typeof window === 'undefined' || !window.cordova) {
@@ -377,22 +251,12 @@ function checkAvailability(plugin, methodName, pluginName) {
 }
 /**
  * Checks if _objectInstance exists and has the method/property
- *
- * @param pluginObj
- * @param methodName
  * @private
  */
 
 function instanceAvailability(pluginObj, methodName) {
   return pluginObj._objectInstance && (!methodName || typeof pluginObj._objectInstance[methodName] !== 'undefined');
 }
-/**
- * @param args
- * @param opts
- * @param resolve
- * @param reject
- */
-
 function setIndex(args, opts, resolve, reject) {
   if (opts === void 0) {
     opts = {};
@@ -457,15 +321,6 @@ function setIndex(args, opts, resolve, reject) {
 
   return args;
 }
-/**
- * @param pluginObj
- * @param methodName
- * @param args
- * @param opts
- * @param resolve
- * @param reject
- */
-
 function callCordovaPlugin(pluginObj, methodName, args, opts, resolve, reject) {
   if (opts === void 0) {
     opts = {};
@@ -477,22 +332,12 @@ function callCordovaPlugin(pluginObj, methodName, args, opts, resolve, reject) {
   var availabilityCheck = checkAvailability(pluginObj, methodName);
 
   if (availabilityCheck === true) {
-    var pluginInstance = getPlugin(pluginObj.constructor.getPluginRef()); // eslint-disable-next-line prefer-spread
-
+    var pluginInstance = getPlugin(pluginObj.constructor.getPluginRef());
     return pluginInstance[methodName].apply(pluginInstance, args);
   } else {
     return availabilityCheck;
   }
 }
-/**
- * @param pluginObj
- * @param methodName
- * @param args
- * @param opts
- * @param resolve
- * @param reject
- */
-
 function callInstance(pluginObj, methodName, args, opts, resolve, reject) {
   if (opts === void 0) {
     opts = {};
@@ -501,14 +346,9 @@ function callInstance(pluginObj, methodName, args, opts, resolve, reject) {
   args = setIndex(args, opts, resolve, reject);
 
   if (instanceAvailability(pluginObj, methodName)) {
-    // eslint-disable-next-line prefer-spread
     return pluginObj._objectInstance[methodName].apply(pluginObj._objectInstance, args);
   }
 }
-/**
- * @param pluginRef
- */
-
 function getPlugin(pluginRef) {
   if (typeof window !== 'undefined') {
     return get(window, pluginRef);
@@ -516,11 +356,6 @@ function getPlugin(pluginRef) {
 
   return null;
 }
-/**
- * @param element
- * @param path
- */
-
 function get(element, path) {
   var paths = path.split('.');
   var obj = element;
@@ -535,12 +370,6 @@ function get(element, path) {
 
   return obj;
 }
-/**
- * @param pluginName
- * @param plugin
- * @param method
- */
-
 function pluginWarn(pluginName, plugin, method) {
   if (method) {
     console.warn('Native: tried calling ' + pluginName + '.' + method + ', but the ' + pluginName + ' plugin is not installed.');
@@ -568,9 +397,6 @@ function cordovaWarn(pluginName, method) {
   }
 }
 /**
- * @param pluginObj
- * @param methodName
- * @param opts
  * @private
  */
 
@@ -601,9 +427,6 @@ var wrap = function (pluginObj, methodName, opts) {
   };
 };
 /**
- * @param pluginObj
- * @param methodName
- * @param opts
  * @private
  */
 
@@ -738,10 +561,10 @@ function wrapInstance(pluginObj, methodName, opts) {
 
 /***/ }),
 
-/***/ 1485:
-/*!*********************************************************************************************************!*\
-  !*** ./node_modules/@awesome-cordova-plugins/core/__ivy_ngcc__/decorators/cordova-function-override.js ***!
-  \*********************************************************************************************************/
+/***/ 2149:
+/*!**********************************************************************************************!*\
+  !*** ./node_modules/@ionic-native/core/__ivy_ngcc__/decorators/cordova-function-override.js ***!
+  \**********************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -749,13 +572,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "cordovaFunctionOverride": () => (/* binding */ cordovaFunctionOverride)
 /* harmony export */ });
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ 2378);
-/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common */ 2474);
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common */ 8467);
 
 
-/**
- * @param pluginObj
- * @param methodName
- */
 
 function overrideFunction(pluginObj, methodName) {
   return new rxjs__WEBPACK_IMPORTED_MODULE_1__.Observable(function (observer) {
@@ -773,12 +592,6 @@ function overrideFunction(pluginObj, methodName) {
     }
   });
 }
-/**
- * @param pluginObj
- * @param methodName
- * @param args
- */
-
 
 function cordovaFunctionOverride(pluginObj, methodName, args) {
   if (args === void 0) {
@@ -790,24 +603,17 @@ function cordovaFunctionOverride(pluginObj, methodName, args) {
 
 /***/ }),
 
-/***/ 5084:
-/*!************************************************************************************************!*\
-  !*** ./node_modules/@awesome-cordova-plugins/core/__ivy_ngcc__/decorators/cordova-instance.js ***!
-  \************************************************************************************************/
+/***/ 5982:
+/*!*************************************************************************************!*\
+  !*** ./node_modules/@ionic-native/core/__ivy_ngcc__/decorators/cordova-instance.js ***!
+  \*************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "cordovaInstance": () => (/* binding */ cordovaInstance)
 /* harmony export */ });
-/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common */ 2474);
-
-/**
- * @param pluginObj
- * @param methodName
- * @param config
- * @param args
- */
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common */ 8467);
 
 function cordovaInstance(pluginObj, methodName, config, args) {
   args = Array.from(args);
@@ -816,10 +622,10 @@ function cordovaInstance(pluginObj, methodName, config, args) {
 
 /***/ }),
 
-/***/ 1830:
-/*!************************************************************************************************!*\
-  !*** ./node_modules/@awesome-cordova-plugins/core/__ivy_ngcc__/decorators/cordova-property.js ***!
-  \************************************************************************************************/
+/***/ 9184:
+/*!*************************************************************************************!*\
+  !*** ./node_modules/@ionic-native/core/__ivy_ngcc__/decorators/cordova-property.js ***!
+  \*************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -827,12 +633,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "cordovaPropertyGet": () => (/* binding */ cordovaPropertyGet),
 /* harmony export */   "cordovaPropertySet": () => (/* binding */ cordovaPropertySet)
 /* harmony export */ });
-/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common */ 2474);
-
-/**
- * @param pluginObj
- * @param key
- */
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common */ 8467);
 
 function cordovaPropertyGet(pluginObj, key) {
   if ((0,_common__WEBPACK_IMPORTED_MODULE_0__.checkAvailability)(pluginObj, key) === true) {
@@ -841,12 +642,6 @@ function cordovaPropertyGet(pluginObj, key) {
 
   return null;
 }
-/**
- * @param pluginObj
- * @param key
- * @param value
- */
-
 function cordovaPropertySet(pluginObj, key, value) {
   if ((0,_common__WEBPACK_IMPORTED_MODULE_0__.checkAvailability)(pluginObj, key) === true) {
     (0,_common__WEBPACK_IMPORTED_MODULE_0__.getPlugin)(pluginObj.constructor.getPluginRef())[key] = value;
@@ -855,24 +650,17 @@ function cordovaPropertySet(pluginObj, key, value) {
 
 /***/ }),
 
-/***/ 4461:
-/*!***************************************************************************************!*\
-  !*** ./node_modules/@awesome-cordova-plugins/core/__ivy_ngcc__/decorators/cordova.js ***!
-  \***************************************************************************************/
+/***/ 6314:
+/*!****************************************************************************!*\
+  !*** ./node_modules/@ionic-native/core/__ivy_ngcc__/decorators/cordova.js ***!
+  \****************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "cordova": () => (/* binding */ cordova)
 /* harmony export */ });
-/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common */ 2474);
-
-/**
- * @param pluginObj
- * @param methodName
- * @param config
- * @param args
- */
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./common */ 8467);
 
 function cordova(pluginObj, methodName, config, args) {
   return (0,_common__WEBPACK_IMPORTED_MODULE_0__.wrap)(pluginObj, methodName, config).apply(this, args);
@@ -880,10 +668,10 @@ function cordova(pluginObj, methodName, config, args) {
 
 /***/ }),
 
-/***/ 6936:
-/*!*************************************************************************************************!*\
-  !*** ./node_modules/@awesome-cordova-plugins/core/__ivy_ngcc__/decorators/instance-property.js ***!
-  \*************************************************************************************************/
+/***/ 548:
+/*!**************************************************************************************!*\
+  !*** ./node_modules/@ionic-native/core/__ivy_ngcc__/decorators/instance-property.js ***!
+  \**************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -891,10 +679,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "instancePropertyGet": () => (/* binding */ instancePropertyGet),
 /* harmony export */   "instancePropertySet": () => (/* binding */ instancePropertySet)
 /* harmony export */ });
-/**
- * @param pluginObj
- * @param key
- */
 function instancePropertyGet(pluginObj, key) {
   if (pluginObj._objectInstance && pluginObj._objectInstance[key]) {
     return pluginObj._objectInstance[key];
@@ -902,12 +686,6 @@ function instancePropertyGet(pluginObj, key) {
 
   return null;
 }
-/**
- * @param pluginObj
- * @param key
- * @param value
- */
-
 function instancePropertySet(pluginObj, key, value) {
   if (pluginObj._objectInstance) {
     pluginObj._objectInstance[key] = value;
@@ -916,10 +694,10 @@ function instancePropertySet(pluginObj, key, value) {
 
 /***/ }),
 
-/***/ 3142:
-/*!******************************************************************************************!*\
-  !*** ./node_modules/@awesome-cordova-plugins/core/__ivy_ngcc__/decorators/interfaces.js ***!
-  \******************************************************************************************/
+/***/ 7542:
+/*!*******************************************************************************!*\
+  !*** ./node_modules/@ionic-native/core/__ivy_ngcc__/decorators/interfaces.js ***!
+  \*******************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -927,15 +705,15 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 4624:
-/*!**************************************************************************!*\
-  !*** ./node_modules/@awesome-cordova-plugins/core/__ivy_ngcc__/index.js ***!
-  \**************************************************************************/
+/***/ 8751:
+/*!***************************************************************!*\
+  !*** ./node_modules/@ionic-native/core/__ivy_ngcc__/index.js ***!
+  \***************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "AwesomeCordovaNativePlugin": () => (/* reexport safe */ _awesome_cordova_plugin__WEBPACK_IMPORTED_MODULE_1__.AwesomeCordovaNativePlugin),
+/* harmony export */   "IonicNativePlugin": () => (/* reexport safe */ _ionic_native_plugin__WEBPACK_IMPORTED_MODULE_1__.IonicNativePlugin),
 /* harmony export */   "checkAvailability": () => (/* reexport safe */ _decorators_common__WEBPACK_IMPORTED_MODULE_2__.checkAvailability),
 /* harmony export */   "cordova": () => (/* reexport safe */ _decorators_cordova__WEBPACK_IMPORTED_MODULE_3__.cordova),
 /* harmony export */   "cordovaFunctionOverride": () => (/* reexport safe */ _decorators_cordova_function_override__WEBPACK_IMPORTED_MODULE_4__.cordovaFunctionOverride),
@@ -948,15 +726,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "instancePropertySet": () => (/* reexport safe */ _decorators_instance_property__WEBPACK_IMPORTED_MODULE_7__.instancePropertySet),
 /* harmony export */   "wrap": () => (/* reexport safe */ _decorators_common__WEBPACK_IMPORTED_MODULE_2__.wrap)
 /* harmony export */ });
-/* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bootstrap */ 3512);
-/* harmony import */ var _awesome_cordova_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./awesome-cordova-plugin */ 5400);
-/* harmony import */ var _decorators_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./decorators/common */ 2474);
-/* harmony import */ var _decorators_cordova__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./decorators/cordova */ 4461);
-/* harmony import */ var _decorators_cordova_function_override__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./decorators/cordova-function-override */ 1485);
-/* harmony import */ var _decorators_cordova_instance__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./decorators/cordova-instance */ 5084);
-/* harmony import */ var _decorators_cordova_property__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./decorators/cordova-property */ 1830);
-/* harmony import */ var _decorators_instance_property__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./decorators/instance-property */ 6936);
-/* harmony import */ var _decorators_interfaces__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./decorators/interfaces */ 3142);
+/* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bootstrap */ 8544);
+/* harmony import */ var _ionic_native_plugin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ionic-native-plugin */ 3562);
+/* harmony import */ var _decorators_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./decorators/common */ 8467);
+/* harmony import */ var _decorators_cordova__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./decorators/cordova */ 6314);
+/* harmony import */ var _decorators_cordova_function_override__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./decorators/cordova-function-override */ 2149);
+/* harmony import */ var _decorators_cordova_instance__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./decorators/cordova-instance */ 5982);
+/* harmony import */ var _decorators_cordova_property__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./decorators/cordova-property */ 9184);
+/* harmony import */ var _decorators_instance_property__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./decorators/instance-property */ 548);
+/* harmony import */ var _decorators_interfaces__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./decorators/interfaces */ 7542);
 
  // Decorators
 
@@ -971,10 +749,101 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 8219:
-/*!*************************************************************************!*\
-  !*** ./node_modules/@awesome-cordova-plugins/core/__ivy_ngcc__/util.js ***!
-  \*************************************************************************/
+/***/ 3562:
+/*!*****************************************************************************!*\
+  !*** ./node_modules/@ionic-native/core/__ivy_ngcc__/ionic-native-plugin.js ***!
+  \*****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "IonicNativePlugin": () => (/* binding */ IonicNativePlugin)
+/* harmony export */ });
+/* harmony import */ var _decorators_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./decorators/common */ 8467);
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./util */ 7632);
+
+
+
+var IonicNativePlugin =
+/** @class */
+function () {
+  function IonicNativePlugin() {}
+  /**
+   * Returns a boolean that indicates whether the plugin is installed
+   * @return {boolean}
+   */
+
+
+  IonicNativePlugin.installed = function () {
+    var isAvailable = (0,_decorators_common__WEBPACK_IMPORTED_MODULE_0__.checkAvailability)(this.pluginRef) === true;
+    return isAvailable;
+  };
+  /**
+   * Returns the original plugin object
+   */
+
+
+  IonicNativePlugin.getPlugin = function () {
+    if (typeof window !== 'undefined') {
+      return (0,_util__WEBPACK_IMPORTED_MODULE_1__.get)(window, this.pluginRef);
+    }
+
+    return null;
+  };
+  /**
+   * Returns the plugin's name
+   */
+
+
+  IonicNativePlugin.getPluginName = function () {
+    var pluginName = this.pluginName;
+    return pluginName;
+  };
+  /**
+   * Returns the plugin's reference
+   */
+
+
+  IonicNativePlugin.getPluginRef = function () {
+    var pluginRef = this.pluginRef;
+    return pluginRef;
+  };
+  /**
+   * Returns the plugin's install name
+   */
+
+
+  IonicNativePlugin.getPluginInstallName = function () {
+    var plugin = this.plugin;
+    return plugin;
+  };
+  /**
+   * Returns the plugin's supported platforms
+   */
+
+
+  IonicNativePlugin.getSupportedPlatforms = function () {
+    var platform = this.platforms;
+    return platform;
+  };
+
+  IonicNativePlugin.pluginName = '';
+  IonicNativePlugin.pluginRef = '';
+  IonicNativePlugin.plugin = '';
+  IonicNativePlugin.repo = '';
+  IonicNativePlugin.platforms = [];
+  IonicNativePlugin.install = '';
+  return IonicNativePlugin;
+}();
+
+
+
+/***/ }),
+
+/***/ 7632:
+/*!**************************************************************!*\
+  !*** ./node_modules/@ionic-native/core/__ivy_ngcc__/util.js ***!
+  \**************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -983,8 +852,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getPromise": () => (/* binding */ getPromise)
 /* harmony export */ });
 /**
- * @param element
- * @param path
  * @private
  */
 function get(element, path) {
@@ -1002,7 +869,6 @@ function get(element, path) {
   return obj;
 }
 /**
- * @param callback
  * @private
  */
 
@@ -1026,280 +892,173 @@ function getPromise(callback) {
 
 /***/ }),
 
-/***/ 5691:
-/*!***************************************************************************************!*\
-  !*** ./node_modules/@awesome-cordova-plugins/wifi-wizard-2/__ivy_ngcc__/ngx/index.js ***!
-  \***************************************************************************************/
+/***/ 1542:
+/*!**********************************************************************!*\
+  !*** ./node_modules/@ionic-native/hotspot/__ivy_ngcc__/ngx/index.js ***!
+  \**********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "WifiWizard2": () => (/* binding */ WifiWizard2)
+/* harmony export */   "Hotspot": () => (/* binding */ Hotspot)
 /* harmony export */ });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @awesome-cordova-plugins/core */ 4624);
+/* harmony import */ var _ionic_native_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ionic-native/core */ 8751);
 
 
 
 
 
-var WifiWizard2 =
+var Hotspot =
 /** @class */
 function (_super) {
-  (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__extends)(WifiWizard2, _super);
+  (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__extends)(Hotspot, _super);
 
-  function WifiWizard2() {
+  function Hotspot() {
     return _super !== null && _super.apply(this, arguments) || this;
   }
 
-  WifiWizard2.prototype.iOSConnectNetwork = function (ssid, ssidPassword) {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "iOSConnectNetwork", {
-      "otherPromise": true,
-      "platforms": ["iOS"]
-    }, arguments);
+  Hotspot.prototype.isAvailable = function () {
+    return (0,_ionic_native_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "isAvailable", {}, arguments);
   };
 
-  WifiWizard2.prototype.iOSDisconnectNetwork = function (ssid) {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "iOSDisconnectNetwork", {
-      "otherPromise": true,
-      "platforms": ["iOS"]
-    }, arguments);
+  Hotspot.prototype.toggleWifi = function () {
+    return (0,_ionic_native_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "toggleWifi", {}, arguments);
   };
 
-  WifiWizard2.prototype.add = function (wifiConfig) {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "add", {
-      "otherPromise": true
-    }, arguments);
+  Hotspot.prototype.createHotspot = function (ssid, mode, password) {
+    return (0,_ionic_native_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "createHotspot", {}, arguments);
   };
 
-  WifiWizard2.prototype.remove = function (ssid) {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "remove", {
-      "otherPromise": true
-    }, arguments);
+  Hotspot.prototype.startHotspot = function () {
+    return (0,_ionic_native_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "startHotspot", {}, arguments);
   };
 
-  WifiWizard2.prototype.connect = function (ssid, bindAll, password, algorithm) {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "connect", {
-      "otherPromise": true,
-      "platforms": ["Android"]
-    }, arguments);
+  Hotspot.prototype.configureHotspot = function (ssid, mode, password) {
+    return (0,_ionic_native_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "configureHotspot", {}, arguments);
   };
 
-  WifiWizard2.prototype.disconnect = function (ssid) {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "disconnect", {
-      "otherPromise": true,
-      "platforms": ["Android"]
-    }, arguments);
+  Hotspot.prototype.stopHotspot = function () {
+    return (0,_ionic_native_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "stopHotspot", {}, arguments);
   };
 
-  WifiWizard2.prototype.enable = function (ssid, bindAll, waitForConnection) {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "enable", {
-      "otherPromise": true,
-      "platforms": ["Android"]
-    }, arguments);
+  Hotspot.prototype.isHotspotEnabled = function () {
+    return (0,_ionic_native_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "isHotspotEnabled", {}, arguments);
   };
 
-  WifiWizard2.prototype.disable = function (ssid) {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "disable", {
-      "otherPromise": true,
-      "platforms": ["Android"]
-    }, arguments);
+  Hotspot.prototype.getAllHotspotDevices = function () {
+    return (0,_ionic_native_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "getAllHotspotDevices", {}, arguments);
   };
 
-  WifiWizard2.prototype.reassociate = function () {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "reassociate", {
-      "otherPromise": true,
-      "platforms": ["Android"]
-    }, arguments);
+  Hotspot.prototype.connectToWifi = function (ssid, password) {
+    return (0,_ionic_native_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "connectToWifi", {}, arguments);
   };
 
-  WifiWizard2.prototype.reconnect = function () {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "reconnect", {
-      "otherPromise": true,
-      "platforms": ["Android"]
-    }, arguments);
+  Hotspot.prototype.connectToWifiAuthEncrypt = function (ssid, password, authentication, encryption) {
+    return (0,_ionic_native_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "connectToWifiAuthEncrypt", {}, arguments);
   };
 
-  WifiWizard2.prototype.listNetworks = function () {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "listNetworks", {
-      "otherPromise": true
-    }, arguments);
+  Hotspot.prototype.addWifiNetwork = function (ssid, mode, password) {
+    return (0,_ionic_native_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "addWifiNetwork", {}, arguments);
   };
 
-  WifiWizard2.prototype.scan = function (options) {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "scan", {
-      "otherPromise": true
-    }, arguments);
+  Hotspot.prototype.removeWifiNetwork = function (ssid) {
+    return (0,_ionic_native_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "removeWifiNetwork", {}, arguments);
   };
 
-  WifiWizard2.prototype.startScan = function () {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "startScan", {
-      "otherPromise": true
-    }, arguments);
+  Hotspot.prototype.isConnectedToInternet = function () {
+    return (0,_ionic_native_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "isConnectedToInternet", {}, arguments);
   };
 
-  WifiWizard2.prototype.getScanResults = function (options) {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "getScanResults", {
-      "otherPromise": true
-    }, arguments);
+  Hotspot.prototype.isConnectedToInternetViaWifi = function () {
+    return (0,_ionic_native_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "isConnectedToInternetViaWifi", {}, arguments);
   };
 
-  WifiWizard2.prototype.isWifiEnabled = function () {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "isWifiEnabled", {
-      "otherPromise": true
-    }, arguments);
+  Hotspot.prototype.isWifiOn = function () {
+    return (0,_ionic_native_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "isWifiOn", {}, arguments);
   };
 
-  WifiWizard2.prototype.setWifiEnabled = function (enabled) {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "setWifiEnabled", {
-      "otherPromise": true,
-      "platforms": ["Android"]
-    }, arguments);
+  Hotspot.prototype.isWifiSupported = function () {
+    return (0,_ionic_native_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "isWifiSupported", {}, arguments);
   };
 
-  WifiWizard2.prototype.enableWifi = function () {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "enableWifi", {
-      "otherPromise": true,
-      "platforms": ["Android"]
-    }, arguments);
+  Hotspot.prototype.isWifiDirectSupported = function () {
+    return (0,_ionic_native_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "isWifiDirectSupported", {}, arguments);
   };
 
-  WifiWizard2.prototype.disableWifi = function () {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "disableWifi", {
-      "otherPromise": true,
-      "platforms": ["Android"]
-    }, arguments);
+  Hotspot.prototype.scanWifi = function () {
+    return (0,_ionic_native_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "scanWifi", {}, arguments);
   };
 
-  WifiWizard2.prototype.resetBindAll = function () {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "resetBindAll", {
-      "otherPromise": true
-    }, arguments);
+  Hotspot.prototype.scanWifiByLevel = function () {
+    return (0,_ionic_native_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "scanWifiByLevel", {}, arguments);
   };
 
-  WifiWizard2.prototype.setBindAll = function () {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "setBindAll", {
-      "otherPromise": true
-    }, arguments);
+  Hotspot.prototype.startWifiPeriodicallyScan = function (interval, duration) {
+    return (0,_ionic_native_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "startWifiPeriodicallyScan", {}, arguments);
   };
 
-  WifiWizard2.prototype.getWifiRouterIP = function () {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "getWifiRouterIP", {
-      "otherPromise": true
-    }, arguments);
+  Hotspot.prototype.stopWifiPeriodicallyScan = function () {
+    return (0,_ionic_native_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "stopWifiPeriodicallyScan", {}, arguments);
   };
 
-  WifiWizard2.prototype.getWifiIP = function () {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "getWifiIP", {
-      "otherPromise": true
-    }, arguments);
+  Hotspot.prototype.getNetConfig = function () {
+    return (0,_ionic_native_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "getNetConfig", {}, arguments);
   };
 
-  WifiWizard2.prototype.getWifiIPInfo = function () {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "getWifiIPInfo", {
-      "otherPromise": true
-    }, arguments);
+  Hotspot.prototype.getConnectionInfo = function () {
+    return (0,_ionic_native_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "getConnectionInfo", {}, arguments);
   };
 
-  WifiWizard2.prototype.getSSIDNetworkID = function (ssid) {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "getSSIDNetworkID", {
-      "otherPromise": true
-    }, arguments);
+  Hotspot.prototype.pingHost = function (ip) {
+    return (0,_ionic_native_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "pingHost", {}, arguments);
   };
 
-  WifiWizard2.prototype.getConnectedNetworkID = function () {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "getConnectedNetworkID", {
-      "otherPromise": true
-    }, arguments);
+  Hotspot.prototype.getMacAddressOfHost = function (ip) {
+    return (0,_ionic_native_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "getMacAddressOfHost", {}, arguments);
   };
 
-  WifiWizard2.prototype.getConnectedSSID = function () {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "getConnectedSSID", {
-      "otherPromise": true
-    }, arguments);
+  Hotspot.prototype.isDnsLive = function (ip) {
+    return (0,_ionic_native_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "isDnsLive", {}, arguments);
   };
 
-  WifiWizard2.prototype.getConnectedBSSID = function () {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "getConnectedBSSID", {
-      "otherPromise": true
-    }, arguments);
+  Hotspot.prototype.isPortLive = function (ip) {
+    return (0,_ionic_native_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "isPortLive", {}, arguments);
   };
 
-  WifiWizard2.prototype.isConnectedToInternet = function () {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "isConnectedToInternet", {
-      "otherPromise": true
-    }, arguments);
+  Hotspot.prototype.isRooted = function () {
+    return (0,_ionic_native_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "isRooted", {}, arguments);
   };
 
-  WifiWizard2.prototype.canPingWifiRouter = function () {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "canPingWifiRouter", {
-      "otherPromise": true
-    }, arguments);
-  };
+  Hotspot.pluginName = "Hotspot";
+  Hotspot.plugin = "cordova-plugin-hotspot";
+  Hotspot.pluginRef = "cordova.plugins.hotspot";
+  Hotspot.repo = "https://github.com/hypery2k/cordova-hotspot-plugin";
+  Hotspot.platforms = ["Android"];
 
-  WifiWizard2.prototype.canConnectToRouter = function () {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "canConnectToRouter", {
-      "otherPromise": true
-    }, arguments);
-  };
-
-  WifiWizard2.prototype.canConnectToInternet = function () {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "canConnectToInternet", {
-      "otherPromise": true
-    }, arguments);
-  };
-
-  WifiWizard2.prototype.requestPermission = function () {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordova)(this, "requestPermission", {
-      "otherPromise": true
-    }, arguments);
-  };
-
-  WifiWizard2.prototype.formatWifiConfig = function (ssid, password, algorithm, isHiddenSSID) {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordovaFunctionOverride)(this, "formatWifiConfig", {}, arguments);
-  };
-
-  WifiWizard2.prototype.formatWPAConfig = function (ssid, password, isHiddenSSID) {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordovaFunctionOverride)(this, "formatWPAConfig", {}, arguments);
-  };
-
-  WifiWizard2.prototype.formatWifiString = function (ssid) {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordovaFunctionOverride)(this, "formatWifiString", {}, arguments);
-  };
-
-  WifiWizard2.prototype.timeout = function (delay) {
-    return (0,_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.cordovaFunctionOverride)(this, "timeout", {}, arguments);
-  };
-
-  WifiWizard2.pluginName = "WifiWizard2";
-  WifiWizard2.plugin = "cordova-plugin-wifiwizard2";
-  WifiWizard2.pluginRef = "WifiWizard2";
-  WifiWizard2.repo = "https://github.com/tripflex/WifiWizard2";
-  WifiWizard2.platforms = ["Android", "iOS"];
-
-  WifiWizard2.ɵfac = /*@__PURE__*/function () {
-    var ɵWifiWizard2_BaseFactory;
-    return function WifiWizard2_Factory(t) {
-      return (ɵWifiWizard2_BaseFactory || (ɵWifiWizard2_BaseFactory = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵgetInheritedFactory"](WifiWizard2)))(t || WifiWizard2);
+  Hotspot.ɵfac = /*@__PURE__*/function () {
+    var ɵHotspot_BaseFactory;
+    return function Hotspot_Factory(t) {
+      return (ɵHotspot_BaseFactory || (ɵHotspot_BaseFactory = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵgetInheritedFactory"](Hotspot)))(t || Hotspot);
     };
   }();
 
-  WifiWizard2.ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjectable"]({
-    token: WifiWizard2,
+  Hotspot.ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjectable"]({
+    token: Hotspot,
     factory: function (t) {
-      return WifiWizard2.ɵfac(t);
+      return Hotspot.ɵfac(t);
     }
   });
 
   (function () {
-    (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵsetClassMetadata"](WifiWizard2, [{
+    (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵsetClassMetadata"](Hotspot, [{
       type: _angular_core__WEBPACK_IMPORTED_MODULE_2__.Injectable
     }], null, null);
   })();
 
-  return WifiWizard2;
-}(_awesome_cordova_plugins_core__WEBPACK_IMPORTED_MODULE_0__.AwesomeCordovaNativePlugin);
+  return Hotspot;
+}(_ionic_native_core__WEBPACK_IMPORTED_MODULE_0__.IonicNativePlugin);
 
 
 
@@ -1343,6 +1102,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "IonCol": () => (/* binding */ IonCol),
 /* harmony export */   "IonContent": () => (/* binding */ IonContent),
 /* harmony export */   "IonDatetime": () => (/* binding */ IonDatetime),
+/* harmony export */   "IonDatetimeButton": () => (/* binding */ IonDatetimeButton),
 /* harmony export */   "IonFab": () => (/* binding */ IonFab),
 /* harmony export */   "IonFabButton": () => (/* binding */ IonFabButton),
 /* harmony export */   "IonFabList": () => (/* binding */ IonFabList),
@@ -3395,7 +3155,9 @@ IonDatetime.ɵcmp = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_2__["�
     minuteValues: "minuteValues",
     mode: "mode",
     monthValues: "monthValues",
+    multiple: "multiple",
     name: "name",
+    preferWheel: "preferWheel",
     presentation: "presentation",
     readonly: "readonly",
     showClearButton: "showClearButton",
@@ -3420,7 +3182,7 @@ IonDatetime.ɵcmp = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_2__["�
 });
 IonDatetime = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['cancelText', 'clearText', 'color', 'dayValues', 'disabled', 'doneText', 'firstDayOfWeek', 'hourCycle', 'hourValues', 'isDateEnabled', 'locale', 'max', 'min', 'minuteValues', 'mode', 'monthValues', 'name', 'presentation', 'readonly', 'showClearButton', 'showDefaultButtons', 'showDefaultTimeLabel', 'showDefaultTitle', 'size', 'value', 'yearValues'],
+  inputs: ['cancelText', 'clearText', 'color', 'dayValues', 'disabled', 'doneText', 'firstDayOfWeek', 'hourCycle', 'hourValues', 'isDateEnabled', 'locale', 'max', 'min', 'minuteValues', 'mode', 'monthValues', 'multiple', 'name', 'preferWheel', 'presentation', 'readonly', 'showClearButton', 'showDefaultButtons', 'showDefaultTimeLabel', 'showDefaultTitle', 'size', 'value', 'yearValues'],
   methods: ['confirm', 'reset', 'cancel']
 })], IonDatetime);
 
@@ -3431,7 +3193,69 @@ IonDatetime = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([ProxyCmp({
       selector: 'ion-datetime',
       changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_2__.ChangeDetectionStrategy.OnPush,
       template: '<ng-content></ng-content>',
-      inputs: ['cancelText', 'clearText', 'color', 'dayValues', 'disabled', 'doneText', 'firstDayOfWeek', 'hourCycle', 'hourValues', 'isDateEnabled', 'locale', 'max', 'min', 'minuteValues', 'mode', 'monthValues', 'name', 'presentation', 'readonly', 'showClearButton', 'showDefaultButtons', 'showDefaultTimeLabel', 'showDefaultTitle', 'size', 'value', 'yearValues']
+      inputs: ['cancelText', 'clearText', 'color', 'dayValues', 'disabled', 'doneText', 'firstDayOfWeek', 'hourCycle', 'hourValues', 'isDateEnabled', 'locale', 'max', 'min', 'minuteValues', 'mode', 'monthValues', 'multiple', 'name', 'preferWheel', 'presentation', 'readonly', 'showClearButton', 'showDefaultButtons', 'showDefaultTimeLabel', 'showDefaultTitle', 'size', 'value', 'yearValues']
+    }]
+  }], function () {
+    return [{
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_2__.ChangeDetectorRef
+    }, {
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_2__.ElementRef
+    }, {
+      type: _angular_core__WEBPACK_IMPORTED_MODULE_2__.NgZone
+    }];
+  }, null);
+})();
+
+let IonDatetimeButton = class IonDatetimeButton {
+  constructor(c, r, z) {
+    this.z = z;
+    c.detach();
+    this.el = r.nativeElement;
+  }
+
+};
+/** @nocollapse */
+
+IonDatetimeButton.ɵfac = function IonDatetimeButton_Factory(t) {
+  return new (t || IonDatetimeButton)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_2__.ChangeDetectorRef), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_2__.ElementRef), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_2__.NgZone));
+};
+/** @nocollapse */
+
+
+IonDatetimeButton.ɵcmp = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({
+  type: IonDatetimeButton,
+  selectors: [["ion-datetime-button"]],
+  inputs: {
+    color: "color",
+    datetime: "datetime",
+    disabled: "disabled",
+    mode: "mode"
+  },
+  ngContentSelectors: _c0,
+  decls: 1,
+  vars: 0,
+  template: function IonDatetimeButton_Template(rf, ctx) {
+    if (rf & 1) {
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵprojectionDef"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵprojection"](0);
+    }
+  },
+  encapsulation: 2,
+  changeDetection: 0
+});
+IonDatetimeButton = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([ProxyCmp({
+  defineCustomElementFn: undefined,
+  inputs: ['color', 'datetime', 'disabled', 'mode']
+})], IonDatetimeButton);
+
+(function () {
+  (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵsetClassMetadata"](IonDatetimeButton, [{
+    type: _angular_core__WEBPACK_IMPORTED_MODULE_2__.Component,
+    args: [{
+      selector: 'ion-datetime-button',
+      changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_2__.ChangeDetectionStrategy.OnPush,
+      template: '<ng-content></ng-content>',
+      inputs: ['color', 'datetime', 'disabled', 'mode']
     }]
   }], function () {
     return [{
@@ -5315,6 +5139,7 @@ IonRange.ɵcmp = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵ
   type: IonRange,
   selectors: [["ion-range"]],
   inputs: {
+    activeBarStart: "activeBarStart",
     color: "color",
     debounce: "debounce",
     disabled: "disabled",
@@ -5344,7 +5169,7 @@ IonRange.ɵcmp = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵ
 });
 IonRange = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['color', 'debounce', 'disabled', 'dualKnobs', 'max', 'min', 'mode', 'name', 'pin', 'pinFormatter', 'snaps', 'step', 'ticks', 'value']
+  inputs: ['activeBarStart', 'color', 'debounce', 'disabled', 'dualKnobs', 'max', 'min', 'mode', 'name', 'pin', 'pinFormatter', 'snaps', 'step', 'ticks', 'value']
 })], IonRange);
 
 (function () {
@@ -5354,7 +5179,7 @@ IonRange = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([ProxyCmp({
       selector: 'ion-range',
       changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_2__.ChangeDetectionStrategy.OnPush,
       template: '<ng-content></ng-content>',
-      inputs: ['color', 'debounce', 'disabled', 'dualKnobs', 'max', 'min', 'mode', 'name', 'pin', 'pinFormatter', 'snaps', 'step', 'ticks', 'value']
+      inputs: ['activeBarStart', 'color', 'debounce', 'disabled', 'dualKnobs', 'max', 'min', 'mode', 'name', 'pin', 'pinFormatter', 'snaps', 'step', 'ticks', 'value']
     }]
   }], function () {
     return [{
@@ -6773,6 +6598,7 @@ IonToggle.ɵcmp = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵ�
     checked: "checked",
     color: "color",
     disabled: "disabled",
+    enableOnOffLabels: "enableOnOffLabels",
     mode: "mode",
     name: "name",
     value: "value"
@@ -6791,7 +6617,7 @@ IonToggle.ɵcmp = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵ�
 });
 IonToggle = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([ProxyCmp({
   defineCustomElementFn: undefined,
-  inputs: ['checked', 'color', 'disabled', 'mode', 'name', 'value']
+  inputs: ['checked', 'color', 'disabled', 'enableOnOffLabels', 'mode', 'name', 'value']
 })], IonToggle);
 
 (function () {
@@ -6801,7 +6627,7 @@ IonToggle = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([ProxyCmp({
       selector: 'ion-toggle',
       changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_2__.ChangeDetectionStrategy.OnPush,
       template: '<ng-content></ng-content>',
-      inputs: ['checked', 'color', 'disabled', 'mode', 'name', 'value']
+      inputs: ['checked', 'color', 'disabled', 'enableOnOffLabels', 'mode', 'name', 'value']
     }]
   }], function () {
     return [{
@@ -9549,6 +9375,7 @@ IonModal.ɵcmp = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵ
   },
   inputs: {
     animated: "animated",
+    keepContentsMounted: "keepContentsMounted",
     backdropBreakpoint: "backdropBreakpoint",
     backdropDismiss: "backdropDismiss",
     breakpoints: "breakpoints",
@@ -9557,6 +9384,7 @@ IonModal.ɵcmp = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵ
     enterAnimation: "enterAnimation",
     event: "event",
     handle: "handle",
+    handleBehavior: "handleBehavior",
     initialBreakpoint: "initialBreakpoint",
     isOpen: "isOpen",
     keyboardClose: "keyboardClose",
@@ -9577,7 +9405,7 @@ IonModal.ɵcmp = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵ
     }
 
     if (rf & 2) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", ctx.isCmpOpen);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", ctx.isCmpOpen || ctx.keepContentsMounted);
     }
   },
   dependencies: [_angular_common__WEBPACK_IMPORTED_MODULE_7__.NgIf, _angular_common__WEBPACK_IMPORTED_MODULE_7__.NgTemplateOutlet],
@@ -9585,7 +9413,7 @@ IonModal.ɵcmp = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵ
   changeDetection: 0
 });
 IonModal = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([ProxyCmp({
-  inputs: ['animated', 'backdropBreakpoint', 'backdropDismiss', 'breakpoints', 'canDismiss', 'cssClass', 'enterAnimation', 'event', 'handle', 'initialBreakpoint', 'isOpen', 'keyboardClose', 'leaveAnimation', 'mode', 'presentingElement', 'showBackdrop', 'swipeToClose', 'translucent', 'trigger'],
+  inputs: ['animated', 'keepContentsMounted', 'backdropBreakpoint', 'backdropDismiss', 'breakpoints', 'canDismiss', 'cssClass', 'enterAnimation', 'event', 'handle', 'handleBehavior', 'initialBreakpoint', 'isOpen', 'keyboardClose', 'leaveAnimation', 'mode', 'presentingElement', 'showBackdrop', 'swipeToClose', 'translucent', 'trigger'],
   methods: ['present', 'dismiss', 'onDidDismiss', 'onWillDismiss', 'setCurrentBreakpoint', 'getCurrentBreakpoint']
 })], IonModal);
 
@@ -9595,8 +9423,10 @@ IonModal = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([ProxyCmp({
     args: [{
       selector: 'ion-modal',
       changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_2__.ChangeDetectionStrategy.OnPush,
-      template: `<div class="ion-page" *ngIf="isCmpOpen"><ng-container [ngTemplateOutlet]="template"></ng-container></div>`,
-      inputs: ['animated', 'backdropBreakpoint', 'backdropDismiss', 'breakpoints', 'canDismiss', 'cssClass', 'enterAnimation', 'event', 'handle', 'initialBreakpoint', 'isOpen', 'keyboardClose', 'leaveAnimation', 'mode', 'presentingElement', 'showBackdrop', 'swipeToClose', 'translucent', 'trigger']
+      template: `<div class="ion-page" *ngIf="isCmpOpen || keepContentsMounted">
+    <ng-container [ngTemplateOutlet]="template"></ng-container>
+  </div>`,
+      inputs: ['animated', 'keepContentsMounted', 'backdropBreakpoint', 'backdropDismiss', 'breakpoints', 'canDismiss', 'cssClass', 'enterAnimation', 'event', 'handle', 'handleBehavior', 'initialBreakpoint', 'isOpen', 'keyboardClose', 'leaveAnimation', 'mode', 'presentingElement', 'showBackdrop', 'swipeToClose', 'translucent', 'trigger']
     }]
   }], function () {
     return [{
@@ -9659,6 +9489,7 @@ IonPopover.ɵcmp = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵ
     alignment: "alignment",
     animated: "animated",
     arrow: "arrow",
+    keepContentsMounted: "keepContentsMounted",
     backdropDismiss: "backdropDismiss",
     cssClass: "cssClass",
     dismissOnSelect: "dismissOnSelect",
@@ -9685,7 +9516,7 @@ IonPopover.ɵcmp = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵ
     }
 
     if (rf & 2) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", ctx.isCmpOpen);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", ctx.isCmpOpen || ctx.keepContentsMounted);
     }
   },
   dependencies: [_angular_common__WEBPACK_IMPORTED_MODULE_7__.NgIf, _angular_common__WEBPACK_IMPORTED_MODULE_7__.NgTemplateOutlet],
@@ -9693,7 +9524,7 @@ IonPopover.ɵcmp = /* @__PURE__ */_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵ
   changeDetection: 0
 });
 IonPopover = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([ProxyCmp({
-  inputs: ['alignment', 'animated', 'arrow', 'backdropDismiss', 'cssClass', 'dismissOnSelect', 'enterAnimation', 'event', 'isOpen', 'keyboardClose', 'leaveAnimation', 'mode', 'showBackdrop', 'translucent', 'trigger', 'triggerAction', 'reference', 'size', 'side'],
+  inputs: ['alignment', 'animated', 'arrow', 'keepContentsMounted', 'backdropDismiss', 'cssClass', 'dismissOnSelect', 'enterAnimation', 'event', 'isOpen', 'keyboardClose', 'leaveAnimation', 'mode', 'showBackdrop', 'translucent', 'trigger', 'triggerAction', 'reference', 'size', 'side'],
   methods: ['present', 'dismiss', 'onDidDismiss', 'onWillDismiss']
 })], IonPopover);
 
@@ -9703,8 +9534,8 @@ IonPopover = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([ProxyCmp({
     args: [{
       selector: 'ion-popover',
       changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_2__.ChangeDetectionStrategy.OnPush,
-      template: `<ng-container [ngTemplateOutlet]="template" *ngIf="isCmpOpen"></ng-container>`,
-      inputs: ['alignment', 'animated', 'arrow', 'backdropDismiss', 'cssClass', 'dismissOnSelect', 'enterAnimation', 'event', 'isOpen', 'keyboardClose', 'leaveAnimation', 'mode', 'showBackdrop', 'translucent', 'trigger', 'triggerAction', 'reference', 'size', 'side']
+      template: `<ng-container [ngTemplateOutlet]="template" *ngIf="isCmpOpen || keepContentsMounted"></ng-container>`,
+      inputs: ['alignment', 'animated', 'arrow', 'keepContentsMounted', 'backdropDismiss', 'cssClass', 'dismissOnSelect', 'enterAnimation', 'event', 'isOpen', 'keyboardClose', 'leaveAnimation', 'mode', 'showBackdrop', 'translucent', 'trigger', 'triggerAction', 'reference', 'size', 'side']
     }]
   }], function () {
     return [{
@@ -12053,7 +11884,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "blockHardwareBackButton": () => (/* binding */ blockHardwareBackButton),
 /* harmony export */   "startHardwareBackButton": () => (/* binding */ startHardwareBackButton)
 /* harmony export */ });
-/* harmony import */ var _Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+/* harmony import */ var _Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
 
 
 /*!
@@ -12100,7 +11931,7 @@ const startHardwareBackButton = () => {
     doc.dispatchEvent(ev);
 
     const executeAction = /*#__PURE__*/function () {
-      var _ref = (0,_Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (handlerRegister) {
+      var _ref = (0,_Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (handlerRegister) {
         try {
           if (handlerRegister === null || handlerRegister === void 0 ? void 0 : handlerRegister.handler) {
             const result = handlerRegister.handler(processHandlers);
@@ -13191,7 +13022,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "s": () => (/* binding */ setPageHidden),
 /* harmony export */   "t": () => (/* binding */ transition)
 /* harmony export */ });
-/* harmony import */ var _Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+/* harmony import */ var _Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
 /* harmony import */ var _index_88bdeaae_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index-88bdeaae.js */ 9479);
 /* harmony import */ var _helpers_4d272360_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helpers-4d272360.js */ 9158);
 
@@ -13258,7 +13089,7 @@ const beforeTransition = opts => {
 };
 
 const runTransition = /*#__PURE__*/function () {
-  var _ref = (0,_Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (opts) {
+  var _ref = (0,_Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (opts) {
     const animationBuilder = yield getAnimationBuilder(opts);
     const ani = animationBuilder && _index_88bdeaae_js__WEBPACK_IMPORTED_MODULE_1__.B.isBrowser ? animation(animationBuilder, opts) : noAnimation(opts); // fast path for no animation
 
@@ -13283,7 +13114,7 @@ const afterTransition = opts => {
 };
 
 const getAnimationBuilder = /*#__PURE__*/function () {
-  var _ref2 = (0,_Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (opts) {
+  var _ref2 = (0,_Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (opts) {
     if (!opts.leavingEl || !opts.animated || opts.duration === 0) {
       return undefined;
     }
@@ -13302,7 +13133,7 @@ const getAnimationBuilder = /*#__PURE__*/function () {
 }();
 
 const animation = /*#__PURE__*/function () {
-  var _ref3 = (0,_Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (animationBuilder, opts) {
+  var _ref3 = (0,_Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (animationBuilder, opts) {
     yield waitForReady(opts, true);
     const trans = animationBuilder(opts.baseEl, opts);
     fireWillEvents(opts.enteringEl, opts.leavingEl);
@@ -13328,7 +13159,7 @@ const animation = /*#__PURE__*/function () {
 }();
 
 const noAnimation = /*#__PURE__*/function () {
-  var _ref4 = (0,_Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (opts) {
+  var _ref4 = (0,_Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (opts) {
     const enteringEl = opts.enteringEl;
     const leavingEl = opts.leavingEl;
     yield waitForReady(opts, false);
@@ -13345,7 +13176,7 @@ const noAnimation = /*#__PURE__*/function () {
 }();
 
 const waitForReady = /*#__PURE__*/function () {
-  var _ref5 = (0,_Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (opts, defaultDeep) {
+  var _ref5 = (0,_Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (opts, defaultDeep) {
     const deep = opts.deepWait !== undefined ? opts.deepWait : defaultDeep;
     const promises = deep ? [deepReady(opts.enteringEl), deepReady(opts.leavingEl)] : [shallowReady(opts.enteringEl), shallowReady(opts.leavingEl)];
     yield Promise.all(promises);
@@ -13358,7 +13189,7 @@ const waitForReady = /*#__PURE__*/function () {
 }();
 
 const notifyViewReady = /*#__PURE__*/function () {
-  var _ref6 = (0,_Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (viewIsReady, enteringEl) {
+  var _ref6 = (0,_Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (viewIsReady, enteringEl) {
     if (viewIsReady) {
       yield viewIsReady(enteringEl);
     }
@@ -13420,7 +13251,7 @@ const shallowReady = el => {
 };
 
 const deepReady = /*#__PURE__*/function () {
-  var _ref7 = (0,_Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (el) {
+  var _ref7 = (0,_Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (el) {
     const element = el;
 
     if (element) {
@@ -13520,7 +13351,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "s": () => (/* binding */ setPlatformHelpers),
 /* harmony export */   "w": () => (/* binding */ win)
 /* harmony export */ });
-/* harmony import */ var _Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+/* harmony import */ var _Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
 
 
 /*!
@@ -14836,7 +14667,7 @@ const dispatchHooks = (hostRef, isInitialLoad) => {
 };
 
 const updateComponent = /*#__PURE__*/function () {
-  var _ref = (0,_Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (hostRef, instance, isInitialLoad) {
+  var _ref = (0,_Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (hostRef, instance, isInitialLoad) {
     // updateComponent
     const elm = hostRef.$hostElement$;
     const endUpdate = createTime('update', hostRef.$cmpMeta$.$tagName$);
@@ -15518,7 +15349,7 @@ const proxyComponent = (Cstr, cmpMeta, flags) => {
 };
 
 const initializeComponent = /*#__PURE__*/function () {
-  var _ref2 = (0,_Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (elm, hostRef, cmpMeta, hmrVersionId, Cstr) {
+  var _ref2 = (0,_Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (elm, hostRef, cmpMeta, hmrVersionId, Cstr) {
     // initializeComponent
     if ((hostRef.$flags$ & 32
     /* hasInitializedComponent */
@@ -16021,7 +15852,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "m": () => (/* binding */ menuController)
 /* harmony export */ });
-/* harmony import */ var _Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+/* harmony import */ var _Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
 /* harmony import */ var _hardware_back_button_490df115_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./hardware-back-button-490df115.js */ 159);
 /* harmony import */ var _helpers_4d272360_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helpers-4d272360.js */ 9158);
 /* harmony import */ var _ionic_global_00475c3a_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ionic-global-00475c3a.js */ 537);
@@ -16130,7 +15961,7 @@ const createMenuController = () => {
   const menus = [];
 
   const open = /*#__PURE__*/function () {
-    var _ref = (0,_Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (menu) {
+    var _ref = (0,_Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (menu) {
       const menuEl = yield get(menu);
 
       if (menuEl) {
@@ -16146,7 +15977,7 @@ const createMenuController = () => {
   }();
 
   const close = /*#__PURE__*/function () {
-    var _ref2 = (0,_Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (menu) {
+    var _ref2 = (0,_Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (menu) {
       const menuEl = yield menu !== undefined ? get(menu) : getOpen();
 
       if (menuEl !== undefined) {
@@ -16162,7 +15993,7 @@ const createMenuController = () => {
   }();
 
   const toggle = /*#__PURE__*/function () {
-    var _ref3 = (0,_Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (menu) {
+    var _ref3 = (0,_Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (menu) {
       const menuEl = yield get(menu);
 
       if (menuEl) {
@@ -16178,7 +16009,7 @@ const createMenuController = () => {
   }();
 
   const enable = /*#__PURE__*/function () {
-    var _ref4 = (0,_Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (shouldEnable, menu) {
+    var _ref4 = (0,_Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (shouldEnable, menu) {
       const menuEl = yield get(menu);
 
       if (menuEl) {
@@ -16194,7 +16025,7 @@ const createMenuController = () => {
   }();
 
   const swipeGesture = /*#__PURE__*/function () {
-    var _ref5 = (0,_Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (shouldEnable, menu) {
+    var _ref5 = (0,_Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (shouldEnable, menu) {
       const menuEl = yield get(menu);
 
       if (menuEl) {
@@ -16210,7 +16041,7 @@ const createMenuController = () => {
   }();
 
   const isOpen = /*#__PURE__*/function () {
-    var _ref6 = (0,_Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (menu) {
+    var _ref6 = (0,_Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (menu) {
       if (menu != null) {
         const menuEl = yield get(menu); // eslint-disable-next-line @typescript-eslint/prefer-optional-chain
 
@@ -16227,7 +16058,7 @@ const createMenuController = () => {
   }();
 
   const isEnabled = /*#__PURE__*/function () {
-    var _ref7 = (0,_Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (menu) {
+    var _ref7 = (0,_Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (menu) {
       const menuEl = yield get(menu);
 
       if (menuEl) {
@@ -16243,7 +16074,7 @@ const createMenuController = () => {
   }();
 
   const get = /*#__PURE__*/function () {
-    var _ref8 = (0,_Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (menu) {
+    var _ref8 = (0,_Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (menu) {
       yield waitUntilReady();
 
       if (menu === 'start' || menu === 'end') {
@@ -16285,7 +16116,7 @@ const createMenuController = () => {
 
 
   const getOpen = /*#__PURE__*/function () {
-    var _ref9 = (0,_Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    var _ref9 = (0,_Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       yield waitUntilReady();
       return _getOpenSync();
     });
@@ -16300,7 +16131,7 @@ const createMenuController = () => {
 
 
   const getMenus = /*#__PURE__*/function () {
-    var _ref10 = (0,_Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    var _ref10 = (0,_Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       yield waitUntilReady();
       return getMenusSync();
     });
@@ -16316,7 +16147,7 @@ const createMenuController = () => {
 
 
   const isAnimating = /*#__PURE__*/function () {
-    var _ref11 = (0,_Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    var _ref11 = (0,_Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       yield waitUntilReady();
       return isAnimatingSync();
     });
@@ -16357,7 +16188,7 @@ const createMenuController = () => {
   };
 
   const _setOpen = /*#__PURE__*/function () {
-    var _ref12 = (0,_Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (menu, shouldOpen, animated) {
+    var _ref12 = (0,_Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (menu, shouldOpen, animated) {
       if (isAnimatingSync()) {
         return false;
       }
@@ -17836,7 +17667,7 @@ const defineCustomElements = (win, options) => {
   if (typeof window === 'undefined') return Promise.resolve();
   return patchEsm().then(() => {
     (0,_app_globals_5b6c8f4b_js__WEBPACK_IMPORTED_MODULE_1__.g)();
-    return (0,_index_88bdeaae_js__WEBPACK_IMPORTED_MODULE_0__.b)(JSON.parse("[[\"ion-menu_3\",[[33,\"ion-menu-button\",{\"color\":[513],\"disabled\":[4],\"menu\":[1],\"autoHide\":[4,\"auto-hide\"],\"type\":[1],\"visible\":[32]},[[16,\"ionMenuChange\",\"visibilityChanged\"],[16,\"ionSplitPaneVisible\",\"visibilityChanged\"]]],[33,\"ion-menu\",{\"contentId\":[513,\"content-id\"],\"menuId\":[513,\"menu-id\"],\"type\":[1025],\"disabled\":[1028],\"side\":[513],\"swipeGesture\":[4,\"swipe-gesture\"],\"maxEdgeStart\":[2,\"max-edge-start\"],\"isPaneVisible\":[32],\"isEndSide\":[32],\"isOpen\":[64],\"isActive\":[64],\"open\":[64],\"close\":[64],\"toggle\":[64],\"setOpen\":[64]},[[16,\"ionSplitPaneVisible\",\"onSplitPaneChanged\"],[2,\"click\",\"onBackdropClick\"],[0,\"keydown\",\"onKeydown\"]]],[1,\"ion-menu-toggle\",{\"menu\":[1],\"autoHide\":[4,\"auto-hide\"],\"visible\":[32]},[[16,\"ionMenuChange\",\"visibilityChanged\"],[16,\"ionSplitPaneVisible\",\"visibilityChanged\"]]]]],[\"ion-fab_3\",[[33,\"ion-fab-button\",{\"color\":[513],\"activated\":[4],\"disabled\":[4],\"download\":[1],\"href\":[1],\"rel\":[1],\"routerDirection\":[1,\"router-direction\"],\"routerAnimation\":[16],\"target\":[1],\"show\":[4],\"translucent\":[4],\"type\":[1],\"size\":[1],\"closeIcon\":[1,\"close-icon\"]}],[1,\"ion-fab\",{\"horizontal\":[1],\"vertical\":[1],\"edge\":[4],\"activated\":[1028],\"close\":[64],\"toggle\":[64]}],[1,\"ion-fab-list\",{\"activated\":[4],\"side\":[1]}]]],[\"ion-refresher_2\",[[0,\"ion-refresher-content\",{\"pullingIcon\":[1025,\"pulling-icon\"],\"pullingText\":[1,\"pulling-text\"],\"refreshingSpinner\":[1025,\"refreshing-spinner\"],\"refreshingText\":[1,\"refreshing-text\"]}],[32,\"ion-refresher\",{\"pullMin\":[2,\"pull-min\"],\"pullMax\":[2,\"pull-max\"],\"closeDuration\":[1,\"close-duration\"],\"snapbackDuration\":[1,\"snapback-duration\"],\"pullFactor\":[2,\"pull-factor\"],\"disabled\":[4],\"nativeRefresher\":[32],\"state\":[32],\"complete\":[64],\"cancel\":[64],\"getProgress\":[64]}]]],[\"ion-back-button\",[[33,\"ion-back-button\",{\"color\":[513],\"defaultHref\":[1025,\"default-href\"],\"disabled\":[516],\"icon\":[1],\"text\":[1],\"type\":[1],\"routerAnimation\":[16]}]]],[\"ion-toast\",[[33,\"ion-toast\",{\"overlayIndex\":[2,\"overlay-index\"],\"color\":[513],\"enterAnimation\":[16],\"leaveAnimation\":[16],\"cssClass\":[1,\"css-class\"],\"duration\":[2],\"header\":[1],\"message\":[1],\"keyboardClose\":[4,\"keyboard-close\"],\"position\":[1],\"buttons\":[16],\"translucent\":[4],\"animated\":[4],\"icon\":[1],\"htmlAttributes\":[16],\"present\":[64],\"dismiss\":[64],\"onDidDismiss\":[64],\"onWillDismiss\":[64]}]]],[\"ion-card_5\",[[33,\"ion-card\",{\"color\":[513],\"button\":[4],\"type\":[1],\"disabled\":[4],\"download\":[1],\"href\":[1],\"rel\":[1],\"routerDirection\":[1,\"router-direction\"],\"routerAnimation\":[16],\"target\":[1]}],[32,\"ion-card-content\"],[33,\"ion-card-header\",{\"color\":[513],\"translucent\":[4]}],[33,\"ion-card-subtitle\",{\"color\":[513]}],[33,\"ion-card-title\",{\"color\":[513]}]]],[\"ion-item-option_3\",[[33,\"ion-item-option\",{\"color\":[513],\"disabled\":[4],\"download\":[1],\"expandable\":[4],\"href\":[1],\"rel\":[1],\"target\":[1],\"type\":[1]}],[32,\"ion-item-options\",{\"side\":[1],\"fireSwipeEvent\":[64]}],[0,\"ion-item-sliding\",{\"disabled\":[4],\"state\":[32],\"getOpenAmount\":[64],\"getSlidingRatio\":[64],\"open\":[64],\"close\":[64],\"closeOpened\":[64]}]]],[\"ion-accordion_2\",[[49,\"ion-accordion\",{\"value\":[1],\"disabled\":[4],\"readonly\":[4],\"toggleIcon\":[1,\"toggle-icon\"],\"toggleIconSlot\":[1,\"toggle-icon-slot\"],\"state\":[32],\"isNext\":[32],\"isPrevious\":[32]}],[33,\"ion-accordion-group\",{\"animated\":[4],\"multiple\":[4],\"value\":[1025],\"disabled\":[4],\"readonly\":[4],\"expand\":[1],\"requestAccordionToggle\":[64],\"getAccordions\":[64]},[[0,\"keydown\",\"onKeydown\"]]]]],[\"ion-infinite-scroll_2\",[[32,\"ion-infinite-scroll-content\",{\"loadingSpinner\":[1025,\"loading-spinner\"],\"loadingText\":[1,\"loading-text\"]}],[0,\"ion-infinite-scroll\",{\"threshold\":[1],\"disabled\":[4],\"position\":[1],\"isLoading\":[32],\"complete\":[64]}]]],[\"ion-reorder_2\",[[33,\"ion-reorder\",null,[[2,\"click\",\"onClick\"]]],[0,\"ion-reorder-group\",{\"disabled\":[4],\"state\":[32],\"complete\":[64]}]]],[\"ion-segment_2\",[[33,\"ion-segment-button\",{\"disabled\":[4],\"layout\":[1],\"type\":[1],\"value\":[1],\"checked\":[32]}],[33,\"ion-segment\",{\"color\":[513],\"disabled\":[4],\"scrollable\":[4],\"swipeGesture\":[4,\"swipe-gesture\"],\"value\":[1025],\"selectOnFocus\":[4,\"select-on-focus\"],\"activated\":[32]},[[0,\"keydown\",\"onKeyDown\"]]]]],[\"ion-tab-bar_2\",[[33,\"ion-tab-button\",{\"disabled\":[4],\"download\":[1],\"href\":[1],\"rel\":[1],\"layout\":[1025],\"selected\":[1028],\"tab\":[1],\"target\":[1]},[[8,\"ionTabBarChanged\",\"onTabBarChanged\"]]],[33,\"ion-tab-bar\",{\"color\":[513],\"selectedTab\":[1,\"selected-tab\"],\"translucent\":[4],\"keyboardVisible\":[32]}]]],[\"ion-chip\",[[33,\"ion-chip\",{\"color\":[513],\"outline\":[4],\"disabled\":[4]}]]],[\"ion-searchbar\",[[34,\"ion-searchbar\",{\"color\":[513],\"animated\":[4],\"autocomplete\":[1],\"autocorrect\":[1],\"cancelButtonIcon\":[1,\"cancel-button-icon\"],\"cancelButtonText\":[1,\"cancel-button-text\"],\"clearIcon\":[1,\"clear-icon\"],\"debounce\":[2],\"disabled\":[4],\"inputmode\":[1],\"enterkeyhint\":[1],\"placeholder\":[1],\"searchIcon\":[1,\"search-icon\"],\"showCancelButton\":[1,\"show-cancel-button\"],\"showClearButton\":[1,\"show-clear-button\"],\"spellcheck\":[4],\"type\":[1],\"value\":[1025],\"focused\":[32],\"noAnimate\":[32],\"setFocus\":[64],\"getInputElement\":[64]}]]],[\"ion-nav_2\",[[1,\"ion-nav\",{\"delegate\":[16],\"swipeGesture\":[1028,\"swipe-gesture\"],\"animated\":[4],\"animation\":[16],\"rootParams\":[16],\"root\":[1],\"push\":[64],\"insert\":[64],\"insertPages\":[64],\"pop\":[64],\"popTo\":[64],\"popToRoot\":[64],\"removeIndex\":[64],\"setRoot\":[64],\"setPages\":[64],\"setRouteId\":[64],\"getRouteId\":[64],\"getActive\":[64],\"getByIndex\":[64],\"canGoBack\":[64],\"getPrevious\":[64]}],[0,\"ion-nav-link\",{\"component\":[1],\"componentProps\":[16],\"routerDirection\":[1,\"router-direction\"],\"routerAnimation\":[16]}]]],[\"ion-slide_2\",[[0,\"ion-slide\"],[36,\"ion-slides\",{\"options\":[8],\"pager\":[4],\"scrollbar\":[4],\"update\":[64],\"updateAutoHeight\":[64],\"slideTo\":[64],\"slideNext\":[64],\"slidePrev\":[64],\"getActiveIndex\":[64],\"getPreviousIndex\":[64],\"length\":[64],\"isEnd\":[64],\"isBeginning\":[64],\"startAutoplay\":[64],\"stopAutoplay\":[64],\"lockSwipeToNext\":[64],\"lockSwipeToPrev\":[64],\"lockSwipes\":[64],\"getSwiper\":[64]}]]],[\"ion-tab_2\",[[1,\"ion-tab\",{\"active\":[1028],\"delegate\":[16],\"tab\":[1],\"component\":[1],\"setActive\":[64]}],[1,\"ion-tabs\",{\"useRouter\":[1028,\"use-router\"],\"selectedTab\":[32],\"select\":[64],\"getTab\":[64],\"getSelected\":[64],\"setRouteId\":[64],\"getRouteId\":[64]}]]],[\"ion-input\",[[34,\"ion-input\",{\"fireFocusEvents\":[4,\"fire-focus-events\"],\"color\":[513],\"accept\":[1],\"autocapitalize\":[1],\"autocomplete\":[1],\"autocorrect\":[1],\"autofocus\":[4],\"clearInput\":[4,\"clear-input\"],\"clearOnEdit\":[4,\"clear-on-edit\"],\"debounce\":[2],\"disabled\":[4],\"enterkeyhint\":[1],\"inputmode\":[1],\"max\":[8],\"maxlength\":[2],\"min\":[8],\"minlength\":[2],\"multiple\":[4],\"name\":[1],\"pattern\":[1],\"placeholder\":[1],\"readonly\":[4],\"required\":[4],\"spellcheck\":[4],\"step\":[1],\"size\":[2],\"type\":[1],\"value\":[1032],\"hasFocus\":[32],\"setFocus\":[64],\"setBlur\":[64],\"getInputElement\":[64]}]]],[\"ion-textarea\",[[34,\"ion-textarea\",{\"fireFocusEvents\":[4,\"fire-focus-events\"],\"color\":[513],\"autocapitalize\":[1],\"autofocus\":[4],\"clearOnEdit\":[1028,\"clear-on-edit\"],\"debounce\":[2],\"disabled\":[4],\"inputmode\":[1],\"enterkeyhint\":[1],\"maxlength\":[2],\"minlength\":[2],\"name\":[1],\"placeholder\":[1],\"readonly\":[4],\"required\":[4],\"spellcheck\":[4],\"cols\":[2],\"rows\":[2],\"wrap\":[1],\"autoGrow\":[4,\"auto-grow\"],\"value\":[1025],\"hasFocus\":[32],\"setFocus\":[64],\"setBlur\":[64],\"getInputElement\":[64]}]]],[\"ion-backdrop\",[[33,\"ion-backdrop\",{\"visible\":[4],\"tappable\":[4],\"stopPropagation\":[4,\"stop-propagation\"]},[[2,\"click\",\"onMouseDown\"]]]]],[\"ion-loading\",[[34,\"ion-loading\",{\"overlayIndex\":[2,\"overlay-index\"],\"keyboardClose\":[4,\"keyboard-close\"],\"enterAnimation\":[16],\"leaveAnimation\":[16],\"message\":[1],\"cssClass\":[1,\"css-class\"],\"duration\":[2],\"backdropDismiss\":[4,\"backdrop-dismiss\"],\"showBackdrop\":[4,\"show-backdrop\"],\"spinner\":[1025],\"translucent\":[4],\"animated\":[4],\"htmlAttributes\":[16],\"present\":[64],\"dismiss\":[64],\"onDidDismiss\":[64],\"onWillDismiss\":[64]}]]],[\"ion-breadcrumb_2\",[[33,\"ion-breadcrumb\",{\"collapsed\":[4],\"last\":[4],\"showCollapsedIndicator\":[4,\"show-collapsed-indicator\"],\"color\":[1],\"active\":[4],\"disabled\":[4],\"download\":[1],\"href\":[1],\"rel\":[1],\"separator\":[4],\"target\":[1],\"routerDirection\":[1,\"router-direction\"],\"routerAnimation\":[16]}],[33,\"ion-breadcrumbs\",{\"color\":[1],\"maxItems\":[2,\"max-items\"],\"itemsBeforeCollapse\":[2,\"items-before-collapse\"],\"itemsAfterCollapse\":[2,\"items-after-collapse\"],\"collapsed\":[32],\"activeChanged\":[32]},[[0,\"collapsedClick\",\"onCollapsedClick\"]]]]],[\"ion-modal\",[[33,\"ion-modal\",{\"hasController\":[4,\"has-controller\"],\"overlayIndex\":[2,\"overlay-index\"],\"delegate\":[16],\"keyboardClose\":[4,\"keyboard-close\"],\"enterAnimation\":[16],\"leaveAnimation\":[16],\"breakpoints\":[16],\"initialBreakpoint\":[2,\"initial-breakpoint\"],\"backdropBreakpoint\":[2,\"backdrop-breakpoint\"],\"handle\":[4],\"component\":[1],\"componentProps\":[16],\"cssClass\":[1,\"css-class\"],\"backdropDismiss\":[4,\"backdrop-dismiss\"],\"showBackdrop\":[4,\"show-backdrop\"],\"animated\":[4],\"swipeToClose\":[4,\"swipe-to-close\"],\"presentingElement\":[16],\"htmlAttributes\":[16],\"isOpen\":[4,\"is-open\"],\"trigger\":[1],\"canDismiss\":[4,\"can-dismiss\"],\"presented\":[32],\"present\":[64],\"dismiss\":[64],\"onDidDismiss\":[64],\"onWillDismiss\":[64],\"setCurrentBreakpoint\":[64],\"getCurrentBreakpoint\":[64]}]]],[\"ion-route_4\",[[0,\"ion-route\",{\"url\":[1],\"component\":[1],\"componentProps\":[16],\"beforeLeave\":[16],\"beforeEnter\":[16]}],[0,\"ion-route-redirect\",{\"from\":[1],\"to\":[1]}],[0,\"ion-router\",{\"root\":[1],\"useHash\":[4,\"use-hash\"],\"canTransition\":[64],\"push\":[64],\"back\":[64],\"printDebug\":[64],\"navChanged\":[64]},[[8,\"popstate\",\"onPopState\"],[4,\"ionBackButton\",\"onBackButton\"]]],[1,\"ion-router-link\",{\"color\":[513],\"href\":[1],\"rel\":[1],\"routerDirection\":[1,\"router-direction\"],\"routerAnimation\":[16],\"target\":[1]}]]],[\"ion-avatar_3\",[[33,\"ion-avatar\"],[33,\"ion-badge\",{\"color\":[513]}],[1,\"ion-thumbnail\"]]],[\"ion-col_3\",[[1,\"ion-col\",{\"offset\":[1],\"offsetXs\":[1,\"offset-xs\"],\"offsetSm\":[1,\"offset-sm\"],\"offsetMd\":[1,\"offset-md\"],\"offsetLg\":[1,\"offset-lg\"],\"offsetXl\":[1,\"offset-xl\"],\"pull\":[1],\"pullXs\":[1,\"pull-xs\"],\"pullSm\":[1,\"pull-sm\"],\"pullMd\":[1,\"pull-md\"],\"pullLg\":[1,\"pull-lg\"],\"pullXl\":[1,\"pull-xl\"],\"push\":[1],\"pushXs\":[1,\"push-xs\"],\"pushSm\":[1,\"push-sm\"],\"pushMd\":[1,\"push-md\"],\"pushLg\":[1,\"push-lg\"],\"pushXl\":[1,\"push-xl\"],\"size\":[1],\"sizeXs\":[1,\"size-xs\"],\"sizeSm\":[1,\"size-sm\"],\"sizeMd\":[1,\"size-md\"],\"sizeLg\":[1,\"size-lg\"],\"sizeXl\":[1,\"size-xl\"]},[[9,\"resize\",\"onResize\"]]],[1,\"ion-grid\",{\"fixed\":[4]}],[1,\"ion-row\"]]],[\"ion-img\",[[1,\"ion-img\",{\"alt\":[1],\"src\":[1],\"loadSrc\":[32],\"loadError\":[32]}]]],[\"ion-progress-bar\",[[33,\"ion-progress-bar\",{\"type\":[1],\"reversed\":[4],\"value\":[2],\"buffer\":[2],\"color\":[513]}]]],[\"ion-range\",[[33,\"ion-range\",{\"color\":[513],\"debounce\":[2],\"name\":[1],\"dualKnobs\":[4,\"dual-knobs\"],\"min\":[2],\"max\":[2],\"pin\":[4],\"pinFormatter\":[16],\"snaps\":[4],\"step\":[2],\"ticks\":[4],\"disabled\":[4],\"value\":[1026],\"ratioA\":[32],\"ratioB\":[32],\"pressedKnob\":[32]}]]],[\"ion-split-pane\",[[33,\"ion-split-pane\",{\"contentId\":[513,\"content-id\"],\"disabled\":[4],\"when\":[8],\"visible\":[32]}]]],[\"ion-text\",[[1,\"ion-text\",{\"color\":[513]}]]],[\"ion-toggle\",[[33,\"ion-toggle\",{\"color\":[513],\"name\":[1],\"checked\":[1028],\"disabled\":[4],\"value\":[1],\"activated\":[32]}]]],[\"ion-virtual-scroll\",[[0,\"ion-virtual-scroll\",{\"approxItemHeight\":[2,\"approx-item-height\"],\"approxHeaderHeight\":[2,\"approx-header-height\"],\"approxFooterHeight\":[2,\"approx-footer-height\"],\"headerFn\":[16],\"footerFn\":[16],\"items\":[16],\"itemHeight\":[16],\"headerHeight\":[16],\"footerHeight\":[16],\"renderItem\":[16],\"renderHeader\":[16],\"renderFooter\":[16],\"nodeRender\":[16],\"domRender\":[16],\"totalHeight\":[32],\"positionForItem\":[64],\"checkRange\":[64],\"checkEnd\":[64]},[[9,\"resize\",\"onResize\"]]]]],[\"ion-picker-column-internal\",[[33,\"ion-picker-column-internal\",{\"items\":[16],\"value\":[1032],\"color\":[513],\"numericInput\":[4,\"numeric-input\"],\"isActive\":[32],\"scrollActiveItemIntoView\":[64],\"setValue\":[64]}]]],[\"ion-picker-internal\",[[33,\"ion-picker-internal\"]]],[\"ion-radio_2\",[[33,\"ion-radio\",{\"color\":[513],\"name\":[1],\"disabled\":[4],\"value\":[8],\"checked\":[32],\"buttonTabindex\":[32],\"setFocus\":[64],\"setButtonTabindex\":[64]}],[0,\"ion-radio-group\",{\"allowEmptySelection\":[4,\"allow-empty-selection\"],\"name\":[1],\"value\":[1032]},[[4,\"keydown\",\"onKeydown\"]]]]],[\"ion-ripple-effect\",[[1,\"ion-ripple-effect\",{\"type\":[1],\"addRipple\":[64]}]]],[\"ion-button_2\",[[33,\"ion-button\",{\"color\":[513],\"buttonType\":[1025,\"button-type\"],\"disabled\":[516],\"expand\":[513],\"fill\":[1537],\"routerDirection\":[1,\"router-direction\"],\"routerAnimation\":[16],\"download\":[1],\"href\":[1],\"rel\":[1],\"shape\":[513],\"size\":[513],\"strong\":[4],\"target\":[1],\"type\":[1]}],[1,\"ion-icon\",{\"mode\":[1025],\"color\":[1],\"ios\":[1],\"md\":[1],\"flipRtl\":[4,\"flip-rtl\"],\"name\":[513],\"src\":[1],\"icon\":[8],\"size\":[1],\"lazy\":[4],\"sanitize\":[4],\"svgContent\":[32],\"isVisible\":[32],\"ariaLabel\":[32]}]]],[\"ion-datetime_3\",[[33,\"ion-datetime\",{\"color\":[1],\"name\":[1],\"disabled\":[4],\"readonly\":[4],\"isDateEnabled\":[16],\"min\":[1025],\"max\":[1025],\"presentation\":[1],\"cancelText\":[1,\"cancel-text\"],\"doneText\":[1,\"done-text\"],\"clearText\":[1,\"clear-text\"],\"yearValues\":[8,\"year-values\"],\"monthValues\":[8,\"month-values\"],\"dayValues\":[8,\"day-values\"],\"hourValues\":[8,\"hour-values\"],\"minuteValues\":[8,\"minute-values\"],\"locale\":[1],\"firstDayOfWeek\":[2,\"first-day-of-week\"],\"value\":[1025],\"showDefaultTitle\":[4,\"show-default-title\"],\"showDefaultButtons\":[4,\"show-default-buttons\"],\"showClearButton\":[4,\"show-clear-button\"],\"showDefaultTimeLabel\":[4,\"show-default-time-label\"],\"hourCycle\":[1,\"hour-cycle\"],\"size\":[1],\"showMonthAndYear\":[32],\"activeParts\":[32],\"workingParts\":[32],\"isPresented\":[32],\"isTimePopoverOpen\":[32],\"confirm\":[64],\"reset\":[64],\"cancel\":[64]}],[34,\"ion-picker\",{\"overlayIndex\":[2,\"overlay-index\"],\"keyboardClose\":[4,\"keyboard-close\"],\"enterAnimation\":[16],\"leaveAnimation\":[16],\"buttons\":[16],\"columns\":[16],\"cssClass\":[1,\"css-class\"],\"duration\":[2],\"showBackdrop\":[4,\"show-backdrop\"],\"backdropDismiss\":[4,\"backdrop-dismiss\"],\"animated\":[4],\"htmlAttributes\":[16],\"presented\":[32],\"present\":[64],\"dismiss\":[64],\"onDidDismiss\":[64],\"onWillDismiss\":[64],\"getColumn\":[64]}],[32,\"ion-picker-column\",{\"col\":[16]}]]],[\"ion-action-sheet\",[[34,\"ion-action-sheet\",{\"overlayIndex\":[2,\"overlay-index\"],\"keyboardClose\":[4,\"keyboard-close\"],\"enterAnimation\":[16],\"leaveAnimation\":[16],\"buttons\":[16],\"cssClass\":[1,\"css-class\"],\"backdropDismiss\":[4,\"backdrop-dismiss\"],\"header\":[1],\"subHeader\":[1,\"sub-header\"],\"translucent\":[4],\"animated\":[4],\"htmlAttributes\":[16],\"present\":[64],\"dismiss\":[64],\"onDidDismiss\":[64],\"onWillDismiss\":[64]}]]],[\"ion-alert\",[[34,\"ion-alert\",{\"overlayIndex\":[2,\"overlay-index\"],\"keyboardClose\":[4,\"keyboard-close\"],\"enterAnimation\":[16],\"leaveAnimation\":[16],\"cssClass\":[1,\"css-class\"],\"header\":[1],\"subHeader\":[1,\"sub-header\"],\"message\":[1],\"buttons\":[16],\"inputs\":[1040],\"backdropDismiss\":[4,\"backdrop-dismiss\"],\"translucent\":[4],\"animated\":[4],\"htmlAttributes\":[16],\"present\":[64],\"dismiss\":[64],\"onDidDismiss\":[64],\"onWillDismiss\":[64]},[[4,\"keydown\",\"onKeydown\"]]]]],[\"ion-popover\",[[33,\"ion-popover\",{\"hasController\":[4,\"has-controller\"],\"delegate\":[16],\"overlayIndex\":[2,\"overlay-index\"],\"enterAnimation\":[16],\"leaveAnimation\":[16],\"component\":[1],\"componentProps\":[16],\"keyboardClose\":[4,\"keyboard-close\"],\"cssClass\":[1,\"css-class\"],\"backdropDismiss\":[4,\"backdrop-dismiss\"],\"event\":[8],\"showBackdrop\":[4,\"show-backdrop\"],\"translucent\":[4],\"animated\":[4],\"htmlAttributes\":[16],\"triggerAction\":[1,\"trigger-action\"],\"trigger\":[1],\"size\":[1],\"dismissOnSelect\":[4,\"dismiss-on-select\"],\"reference\":[1],\"side\":[1],\"alignment\":[1025],\"arrow\":[4],\"isOpen\":[4,\"is-open\"],\"keyboardEvents\":[4,\"keyboard-events\"],\"presented\":[32],\"presentFromTrigger\":[64],\"present\":[64],\"dismiss\":[64],\"getParentPopover\":[64],\"onDidDismiss\":[64],\"onWillDismiss\":[64]}]]],[\"ion-checkbox\",[[33,\"ion-checkbox\",{\"color\":[513],\"name\":[1],\"checked\":[1028],\"indeterminate\":[1028],\"disabled\":[4],\"value\":[8]}]]],[\"ion-select_3\",[[33,\"ion-select\",{\"disabled\":[4],\"cancelText\":[1,\"cancel-text\"],\"okText\":[1,\"ok-text\"],\"placeholder\":[1],\"name\":[1],\"selectedText\":[1,\"selected-text\"],\"multiple\":[4],\"interface\":[1],\"interfaceOptions\":[8,\"interface-options\"],\"compareWith\":[1,\"compare-with\"],\"value\":[1032],\"isExpanded\":[32],\"open\":[64]}],[1,\"ion-select-option\",{\"disabled\":[4],\"value\":[8]}],[34,\"ion-select-popover\",{\"header\":[1],\"subHeader\":[1,\"sub-header\"],\"message\":[1],\"multiple\":[4],\"options\":[16]},[[0,\"ionChange\",\"onSelect\"]]]]],[\"ion-app_8\",[[0,\"ion-app\",{\"setFocus\":[64]}],[1,\"ion-content\",{\"color\":[513],\"fullscreen\":[4],\"forceOverscroll\":[1028,\"force-overscroll\"],\"scrollX\":[4,\"scroll-x\"],\"scrollY\":[4,\"scroll-y\"],\"scrollEvents\":[4,\"scroll-events\"],\"getScrollElement\":[64],\"scrollToTop\":[64],\"scrollToBottom\":[64],\"scrollByPoint\":[64],\"scrollToPoint\":[64]},[[8,\"appload\",\"onAppLoad\"]]],[36,\"ion-footer\",{\"collapse\":[1],\"translucent\":[4]}],[36,\"ion-header\",{\"collapse\":[1],\"translucent\":[4]}],[1,\"ion-router-outlet\",{\"mode\":[1025],\"delegate\":[16],\"animated\":[4],\"animation\":[16],\"swipeHandler\":[16],\"commit\":[64],\"setRouteId\":[64],\"getRouteId\":[64]}],[33,\"ion-title\",{\"color\":[513],\"size\":[1]}],[33,\"ion-toolbar\",{\"color\":[513]},[[0,\"ionStyle\",\"childrenStyle\"]]],[34,\"ion-buttons\",{\"collapse\":[4]}]]],[\"ion-spinner\",[[1,\"ion-spinner\",{\"color\":[513],\"duration\":[2],\"name\":[1],\"paused\":[4]}]]],[\"ion-item_8\",[[33,\"ion-item-divider\",{\"color\":[513],\"sticky\":[4]}],[32,\"ion-item-group\"],[1,\"ion-skeleton-text\",{\"animated\":[4]}],[32,\"ion-list\",{\"lines\":[1],\"inset\":[4],\"closeSlidingItems\":[64]}],[33,\"ion-list-header\",{\"color\":[513],\"lines\":[1]}],[49,\"ion-item\",{\"color\":[513],\"button\":[4],\"detail\":[4],\"detailIcon\":[1,\"detail-icon\"],\"disabled\":[4],\"download\":[1],\"fill\":[1],\"shape\":[1],\"href\":[1],\"rel\":[1],\"lines\":[1],\"counter\":[4],\"routerAnimation\":[16],\"routerDirection\":[1,\"router-direction\"],\"target\":[1],\"type\":[1],\"counterFormatter\":[16],\"multipleInputs\":[32],\"focusable\":[32],\"counterString\":[32]},[[0,\"ionChange\",\"handleIonChange\"],[0,\"ionColor\",\"labelColorChanged\"],[0,\"ionStyle\",\"itemStyle\"]]],[34,\"ion-label\",{\"color\":[513],\"position\":[1],\"noAnimate\":[32]}],[33,\"ion-note\",{\"color\":[513]}]]]]"), options);
+    return (0,_index_88bdeaae_js__WEBPACK_IMPORTED_MODULE_0__.b)(JSON.parse("[[\"ion-menu_3\",[[33,\"ion-menu-button\",{\"color\":[513],\"disabled\":[4],\"menu\":[1],\"autoHide\":[4,\"auto-hide\"],\"type\":[1],\"visible\":[32]},[[16,\"ionMenuChange\",\"visibilityChanged\"],[16,\"ionSplitPaneVisible\",\"visibilityChanged\"]]],[33,\"ion-menu\",{\"contentId\":[513,\"content-id\"],\"menuId\":[513,\"menu-id\"],\"type\":[1025],\"disabled\":[1028],\"side\":[513],\"swipeGesture\":[4,\"swipe-gesture\"],\"maxEdgeStart\":[2,\"max-edge-start\"],\"isPaneVisible\":[32],\"isEndSide\":[32],\"isOpen\":[64],\"isActive\":[64],\"open\":[64],\"close\":[64],\"toggle\":[64],\"setOpen\":[64]},[[16,\"ionSplitPaneVisible\",\"onSplitPaneChanged\"],[2,\"click\",\"onBackdropClick\"],[0,\"keydown\",\"onKeydown\"]]],[1,\"ion-menu-toggle\",{\"menu\":[1],\"autoHide\":[4,\"auto-hide\"],\"visible\":[32]},[[16,\"ionMenuChange\",\"visibilityChanged\"],[16,\"ionSplitPaneVisible\",\"visibilityChanged\"]]]]],[\"ion-fab_3\",[[33,\"ion-fab-button\",{\"color\":[513],\"activated\":[4],\"disabled\":[4],\"download\":[1],\"href\":[1],\"rel\":[1],\"routerDirection\":[1,\"router-direction\"],\"routerAnimation\":[16],\"target\":[1],\"show\":[4],\"translucent\":[4],\"type\":[1],\"size\":[1],\"closeIcon\":[1,\"close-icon\"]}],[1,\"ion-fab\",{\"horizontal\":[1],\"vertical\":[1],\"edge\":[4],\"activated\":[1028],\"close\":[64],\"toggle\":[64]}],[1,\"ion-fab-list\",{\"activated\":[4],\"side\":[1]}]]],[\"ion-refresher_2\",[[0,\"ion-refresher-content\",{\"pullingIcon\":[1025,\"pulling-icon\"],\"pullingText\":[1,\"pulling-text\"],\"refreshingSpinner\":[1025,\"refreshing-spinner\"],\"refreshingText\":[1,\"refreshing-text\"]}],[32,\"ion-refresher\",{\"pullMin\":[2,\"pull-min\"],\"pullMax\":[2,\"pull-max\"],\"closeDuration\":[1,\"close-duration\"],\"snapbackDuration\":[1,\"snapback-duration\"],\"pullFactor\":[2,\"pull-factor\"],\"disabled\":[4],\"nativeRefresher\":[32],\"state\":[32],\"complete\":[64],\"cancel\":[64],\"getProgress\":[64]}]]],[\"ion-back-button\",[[33,\"ion-back-button\",{\"color\":[513],\"defaultHref\":[1025,\"default-href\"],\"disabled\":[516],\"icon\":[1],\"text\":[1],\"type\":[1],\"routerAnimation\":[16]}]]],[\"ion-toast\",[[33,\"ion-toast\",{\"overlayIndex\":[2,\"overlay-index\"],\"color\":[513],\"enterAnimation\":[16],\"leaveAnimation\":[16],\"cssClass\":[1,\"css-class\"],\"duration\":[2],\"header\":[1],\"message\":[1],\"keyboardClose\":[4,\"keyboard-close\"],\"position\":[1],\"buttons\":[16],\"translucent\":[4],\"animated\":[4],\"icon\":[1],\"htmlAttributes\":[16],\"present\":[64],\"dismiss\":[64],\"onDidDismiss\":[64],\"onWillDismiss\":[64]}]]],[\"ion-card_5\",[[33,\"ion-card\",{\"color\":[513],\"button\":[4],\"type\":[1],\"disabled\":[4],\"download\":[1],\"href\":[1],\"rel\":[1],\"routerDirection\":[1,\"router-direction\"],\"routerAnimation\":[16],\"target\":[1]}],[32,\"ion-card-content\"],[33,\"ion-card-header\",{\"color\":[513],\"translucent\":[4]}],[33,\"ion-card-subtitle\",{\"color\":[513]}],[33,\"ion-card-title\",{\"color\":[513]}]]],[\"ion-item-option_3\",[[33,\"ion-item-option\",{\"color\":[513],\"disabled\":[4],\"download\":[1],\"expandable\":[4],\"href\":[1],\"rel\":[1],\"target\":[1],\"type\":[1]}],[32,\"ion-item-options\",{\"side\":[1],\"fireSwipeEvent\":[64]}],[0,\"ion-item-sliding\",{\"disabled\":[4],\"state\":[32],\"getOpenAmount\":[64],\"getSlidingRatio\":[64],\"open\":[64],\"close\":[64],\"closeOpened\":[64]}]]],[\"ion-accordion_2\",[[49,\"ion-accordion\",{\"value\":[1],\"disabled\":[4],\"readonly\":[4],\"toggleIcon\":[1,\"toggle-icon\"],\"toggleIconSlot\":[1,\"toggle-icon-slot\"],\"state\":[32],\"isNext\":[32],\"isPrevious\":[32]}],[33,\"ion-accordion-group\",{\"animated\":[4],\"multiple\":[4],\"value\":[1025],\"disabled\":[4],\"readonly\":[4],\"expand\":[1],\"requestAccordionToggle\":[64],\"getAccordions\":[64]},[[0,\"keydown\",\"onKeydown\"]]]]],[\"ion-breadcrumb_2\",[[33,\"ion-breadcrumb\",{\"collapsed\":[4],\"last\":[4],\"showCollapsedIndicator\":[4,\"show-collapsed-indicator\"],\"color\":[1],\"active\":[4],\"disabled\":[4],\"download\":[1],\"href\":[1],\"rel\":[1],\"separator\":[4],\"target\":[1],\"routerDirection\":[1,\"router-direction\"],\"routerAnimation\":[16]}],[33,\"ion-breadcrumbs\",{\"color\":[1],\"maxItems\":[2,\"max-items\"],\"itemsBeforeCollapse\":[2,\"items-before-collapse\"],\"itemsAfterCollapse\":[2,\"items-after-collapse\"],\"collapsed\":[32],\"activeChanged\":[32]},[[0,\"collapsedClick\",\"onCollapsedClick\"]]]]],[\"ion-infinite-scroll_2\",[[32,\"ion-infinite-scroll-content\",{\"loadingSpinner\":[1025,\"loading-spinner\"],\"loadingText\":[1,\"loading-text\"]}],[0,\"ion-infinite-scroll\",{\"threshold\":[1],\"disabled\":[4],\"position\":[1],\"isLoading\":[32],\"complete\":[64]}]]],[\"ion-reorder_2\",[[33,\"ion-reorder\",null,[[2,\"click\",\"onClick\"]]],[0,\"ion-reorder-group\",{\"disabled\":[4],\"state\":[32],\"complete\":[64]}]]],[\"ion-segment_2\",[[33,\"ion-segment-button\",{\"disabled\":[4],\"layout\":[1],\"type\":[1],\"value\":[1],\"checked\":[32]}],[33,\"ion-segment\",{\"color\":[513],\"disabled\":[4],\"scrollable\":[4],\"swipeGesture\":[4,\"swipe-gesture\"],\"value\":[1025],\"selectOnFocus\":[4,\"select-on-focus\"],\"activated\":[32]},[[0,\"keydown\",\"onKeyDown\"]]]]],[\"ion-tab-bar_2\",[[33,\"ion-tab-button\",{\"disabled\":[4],\"download\":[1],\"href\":[1],\"rel\":[1],\"layout\":[1025],\"selected\":[1028],\"tab\":[1],\"target\":[1]},[[8,\"ionTabBarChanged\",\"onTabBarChanged\"]]],[33,\"ion-tab-bar\",{\"color\":[513],\"selectedTab\":[1,\"selected-tab\"],\"translucent\":[4],\"keyboardVisible\":[32]}]]],[\"ion-chip\",[[33,\"ion-chip\",{\"color\":[513],\"outline\":[4],\"disabled\":[4]}]]],[\"ion-datetime-button\",[[33,\"ion-datetime-button\",{\"color\":[513],\"disabled\":[516],\"datetime\":[1],\"datetimePresentation\":[32],\"dateText\":[32],\"timeText\":[32],\"datetimeActive\":[32],\"selectedButton\":[32]}]]],[\"ion-searchbar\",[[34,\"ion-searchbar\",{\"color\":[513],\"animated\":[4],\"autocomplete\":[1],\"autocorrect\":[1],\"cancelButtonIcon\":[1,\"cancel-button-icon\"],\"cancelButtonText\":[1,\"cancel-button-text\"],\"clearIcon\":[1,\"clear-icon\"],\"debounce\":[2],\"disabled\":[4],\"inputmode\":[1],\"enterkeyhint\":[1],\"placeholder\":[1],\"searchIcon\":[1,\"search-icon\"],\"showCancelButton\":[1,\"show-cancel-button\"],\"showClearButton\":[1,\"show-clear-button\"],\"spellcheck\":[4],\"type\":[1],\"value\":[1025],\"focused\":[32],\"noAnimate\":[32],\"setFocus\":[64],\"getInputElement\":[64]}]]],[\"ion-toggle\",[[33,\"ion-toggle\",{\"color\":[513],\"name\":[1],\"checked\":[1028],\"disabled\":[4],\"value\":[1],\"enableOnOffLabels\":[4,\"enable-on-off-labels\"],\"activated\":[32]}]]],[\"ion-nav_2\",[[1,\"ion-nav\",{\"delegate\":[16],\"swipeGesture\":[1028,\"swipe-gesture\"],\"animated\":[4],\"animation\":[16],\"rootParams\":[16],\"root\":[1],\"push\":[64],\"insert\":[64],\"insertPages\":[64],\"pop\":[64],\"popTo\":[64],\"popToRoot\":[64],\"removeIndex\":[64],\"setRoot\":[64],\"setPages\":[64],\"setRouteId\":[64],\"getRouteId\":[64],\"getActive\":[64],\"getByIndex\":[64],\"canGoBack\":[64],\"getPrevious\":[64]}],[0,\"ion-nav-link\",{\"component\":[1],\"componentProps\":[16],\"routerDirection\":[1,\"router-direction\"],\"routerAnimation\":[16]}]]],[\"ion-input\",[[34,\"ion-input\",{\"fireFocusEvents\":[4,\"fire-focus-events\"],\"color\":[513],\"accept\":[1],\"autocapitalize\":[1],\"autocomplete\":[1],\"autocorrect\":[1],\"autofocus\":[4],\"clearInput\":[4,\"clear-input\"],\"clearOnEdit\":[4,\"clear-on-edit\"],\"debounce\":[2],\"disabled\":[4],\"enterkeyhint\":[1],\"inputmode\":[1],\"max\":[8],\"maxlength\":[2],\"min\":[8],\"minlength\":[2],\"multiple\":[4],\"name\":[1],\"pattern\":[1],\"placeholder\":[1],\"readonly\":[4],\"required\":[4],\"spellcheck\":[4],\"step\":[1],\"size\":[2],\"type\":[1],\"value\":[1032],\"hasFocus\":[32],\"setFocus\":[64],\"setBlur\":[64],\"getInputElement\":[64]}]]],[\"ion-textarea\",[[34,\"ion-textarea\",{\"fireFocusEvents\":[4,\"fire-focus-events\"],\"color\":[513],\"autocapitalize\":[1],\"autofocus\":[4],\"clearOnEdit\":[1028,\"clear-on-edit\"],\"debounce\":[2],\"disabled\":[4],\"inputmode\":[1],\"enterkeyhint\":[1],\"maxlength\":[2],\"minlength\":[2],\"name\":[1],\"placeholder\":[1],\"readonly\":[4],\"required\":[4],\"spellcheck\":[4],\"cols\":[2],\"rows\":[2],\"wrap\":[1],\"autoGrow\":[516,\"auto-grow\"],\"value\":[1025],\"hasFocus\":[32],\"setFocus\":[64],\"setBlur\":[64],\"getInputElement\":[64]}]]],[\"ion-backdrop\",[[33,\"ion-backdrop\",{\"visible\":[4],\"tappable\":[4],\"stopPropagation\":[4,\"stop-propagation\"]},[[2,\"click\",\"onMouseDown\"]]]]],[\"ion-loading\",[[34,\"ion-loading\",{\"overlayIndex\":[2,\"overlay-index\"],\"keyboardClose\":[4,\"keyboard-close\"],\"enterAnimation\":[16],\"leaveAnimation\":[16],\"message\":[1],\"cssClass\":[1,\"css-class\"],\"duration\":[2],\"backdropDismiss\":[4,\"backdrop-dismiss\"],\"showBackdrop\":[4,\"show-backdrop\"],\"spinner\":[1025],\"translucent\":[4],\"animated\":[4],\"htmlAttributes\":[16],\"present\":[64],\"dismiss\":[64],\"onDidDismiss\":[64],\"onWillDismiss\":[64]}]]],[\"ion-modal\",[[33,\"ion-modal\",{\"hasController\":[4,\"has-controller\"],\"overlayIndex\":[2,\"overlay-index\"],\"delegate\":[16],\"keyboardClose\":[4,\"keyboard-close\"],\"enterAnimation\":[16],\"leaveAnimation\":[16],\"breakpoints\":[16],\"initialBreakpoint\":[2,\"initial-breakpoint\"],\"backdropBreakpoint\":[2,\"backdrop-breakpoint\"],\"handle\":[4],\"handleBehavior\":[1,\"handle-behavior\"],\"component\":[1],\"componentProps\":[16],\"cssClass\":[1,\"css-class\"],\"backdropDismiss\":[4,\"backdrop-dismiss\"],\"showBackdrop\":[4,\"show-backdrop\"],\"animated\":[4],\"swipeToClose\":[4,\"swipe-to-close\"],\"presentingElement\":[16],\"htmlAttributes\":[16],\"isOpen\":[4,\"is-open\"],\"trigger\":[1],\"keepContentsMounted\":[4,\"keep-contents-mounted\"],\"canDismiss\":[4,\"can-dismiss\"],\"presented\":[32],\"present\":[64],\"dismiss\":[64],\"onDidDismiss\":[64],\"onWillDismiss\":[64],\"setCurrentBreakpoint\":[64],\"getCurrentBreakpoint\":[64]}]]],[\"ion-route_4\",[[0,\"ion-route\",{\"url\":[1],\"component\":[1],\"componentProps\":[16],\"beforeLeave\":[16],\"beforeEnter\":[16]}],[0,\"ion-route-redirect\",{\"from\":[1],\"to\":[1]}],[0,\"ion-router\",{\"root\":[1],\"useHash\":[4,\"use-hash\"],\"canTransition\":[64],\"push\":[64],\"back\":[64],\"printDebug\":[64],\"navChanged\":[64]},[[8,\"popstate\",\"onPopState\"],[4,\"ionBackButton\",\"onBackButton\"]]],[1,\"ion-router-link\",{\"color\":[513],\"href\":[1],\"rel\":[1],\"routerDirection\":[1,\"router-direction\"],\"routerAnimation\":[16],\"target\":[1]}]]],[\"ion-avatar_3\",[[33,\"ion-avatar\"],[33,\"ion-badge\",{\"color\":[513]}],[1,\"ion-thumbnail\"]]],[\"ion-col_3\",[[1,\"ion-col\",{\"offset\":[1],\"offsetXs\":[1,\"offset-xs\"],\"offsetSm\":[1,\"offset-sm\"],\"offsetMd\":[1,\"offset-md\"],\"offsetLg\":[1,\"offset-lg\"],\"offsetXl\":[1,\"offset-xl\"],\"pull\":[1],\"pullXs\":[1,\"pull-xs\"],\"pullSm\":[1,\"pull-sm\"],\"pullMd\":[1,\"pull-md\"],\"pullLg\":[1,\"pull-lg\"],\"pullXl\":[1,\"pull-xl\"],\"push\":[1],\"pushXs\":[1,\"push-xs\"],\"pushSm\":[1,\"push-sm\"],\"pushMd\":[1,\"push-md\"],\"pushLg\":[1,\"push-lg\"],\"pushXl\":[1,\"push-xl\"],\"size\":[1],\"sizeXs\":[1,\"size-xs\"],\"sizeSm\":[1,\"size-sm\"],\"sizeMd\":[1,\"size-md\"],\"sizeLg\":[1,\"size-lg\"],\"sizeXl\":[1,\"size-xl\"]},[[9,\"resize\",\"onResize\"]]],[1,\"ion-grid\",{\"fixed\":[4]}],[1,\"ion-row\"]]],[\"ion-slide_2\",[[0,\"ion-slide\"],[36,\"ion-slides\",{\"options\":[8],\"pager\":[4],\"scrollbar\":[4],\"update\":[64],\"updateAutoHeight\":[64],\"slideTo\":[64],\"slideNext\":[64],\"slidePrev\":[64],\"getActiveIndex\":[64],\"getPreviousIndex\":[64],\"length\":[64],\"isEnd\":[64],\"isBeginning\":[64],\"startAutoplay\":[64],\"stopAutoplay\":[64],\"lockSwipeToNext\":[64],\"lockSwipeToPrev\":[64],\"lockSwipes\":[64],\"getSwiper\":[64]}]]],[\"ion-tab_2\",[[1,\"ion-tab\",{\"active\":[1028],\"delegate\":[16],\"tab\":[1],\"component\":[1],\"setActive\":[64]}],[1,\"ion-tabs\",{\"useRouter\":[1028,\"use-router\"],\"selectedTab\":[32],\"select\":[64],\"getTab\":[64],\"getSelected\":[64],\"setRouteId\":[64],\"getRouteId\":[64]}]]],[\"ion-img\",[[1,\"ion-img\",{\"alt\":[1],\"src\":[1],\"loadSrc\":[32],\"loadError\":[32]}]]],[\"ion-progress-bar\",[[33,\"ion-progress-bar\",{\"type\":[1],\"reversed\":[4],\"value\":[2],\"buffer\":[2],\"color\":[513]}]]],[\"ion-range\",[[33,\"ion-range\",{\"color\":[513],\"debounce\":[2],\"name\":[1],\"dualKnobs\":[4,\"dual-knobs\"],\"min\":[2],\"max\":[2],\"pin\":[4],\"pinFormatter\":[16],\"snaps\":[4],\"step\":[2],\"ticks\":[4],\"activeBarStart\":[1026,\"active-bar-start\"],\"disabled\":[4],\"value\":[1026],\"ratioA\":[32],\"ratioB\":[32],\"pressedKnob\":[32]}]]],[\"ion-split-pane\",[[33,\"ion-split-pane\",{\"contentId\":[513,\"content-id\"],\"disabled\":[4],\"when\":[8],\"visible\":[32]}]]],[\"ion-text\",[[1,\"ion-text\",{\"color\":[513]}]]],[\"ion-virtual-scroll\",[[0,\"ion-virtual-scroll\",{\"approxItemHeight\":[2,\"approx-item-height\"],\"approxHeaderHeight\":[2,\"approx-header-height\"],\"approxFooterHeight\":[2,\"approx-footer-height\"],\"headerFn\":[16],\"footerFn\":[16],\"items\":[16],\"itemHeight\":[16],\"headerHeight\":[16],\"footerHeight\":[16],\"renderItem\":[16],\"renderHeader\":[16],\"renderFooter\":[16],\"nodeRender\":[16],\"domRender\":[16],\"totalHeight\":[32],\"positionForItem\":[64],\"checkRange\":[64],\"checkEnd\":[64]},[[9,\"resize\",\"onResize\"]]]]],[\"ion-picker-column-internal\",[[33,\"ion-picker-column-internal\",{\"items\":[16],\"value\":[1032],\"color\":[513],\"numericInput\":[4,\"numeric-input\"],\"isActive\":[32],\"scrollActiveItemIntoView\":[64],\"setValue\":[64]}]]],[\"ion-picker-internal\",[[33,\"ion-picker-internal\"]]],[\"ion-radio_2\",[[33,\"ion-radio\",{\"color\":[513],\"name\":[1],\"disabled\":[4],\"value\":[8],\"checked\":[32],\"buttonTabindex\":[32],\"setFocus\":[64],\"setButtonTabindex\":[64]}],[0,\"ion-radio-group\",{\"allowEmptySelection\":[4,\"allow-empty-selection\"],\"name\":[1],\"value\":[1032]},[[4,\"keydown\",\"onKeydown\"]]]]],[\"ion-ripple-effect\",[[1,\"ion-ripple-effect\",{\"type\":[1],\"addRipple\":[64]}]]],[\"ion-button_2\",[[33,\"ion-button\",{\"color\":[513],\"buttonType\":[1025,\"button-type\"],\"disabled\":[516],\"expand\":[513],\"fill\":[1537],\"routerDirection\":[1,\"router-direction\"],\"routerAnimation\":[16],\"download\":[1],\"href\":[1],\"rel\":[1],\"shape\":[513],\"size\":[513],\"strong\":[4],\"target\":[1],\"type\":[1]}],[1,\"ion-icon\",{\"mode\":[1025],\"color\":[1],\"ios\":[1],\"md\":[1],\"flipRtl\":[4,\"flip-rtl\"],\"name\":[513],\"src\":[1],\"icon\":[8],\"size\":[1],\"lazy\":[4],\"sanitize\":[4],\"svgContent\":[32],\"isVisible\":[32],\"ariaLabel\":[32]}]]],[\"ion-datetime_3\",[[33,\"ion-datetime\",{\"color\":[1],\"name\":[1],\"disabled\":[4],\"readonly\":[4],\"isDateEnabled\":[16],\"min\":[1025],\"max\":[1025],\"presentation\":[1],\"cancelText\":[1,\"cancel-text\"],\"doneText\":[1,\"done-text\"],\"clearText\":[1,\"clear-text\"],\"yearValues\":[8,\"year-values\"],\"monthValues\":[8,\"month-values\"],\"dayValues\":[8,\"day-values\"],\"hourValues\":[8,\"hour-values\"],\"minuteValues\":[8,\"minute-values\"],\"locale\":[1],\"firstDayOfWeek\":[2,\"first-day-of-week\"],\"multiple\":[4],\"value\":[1025],\"showDefaultTitle\":[4,\"show-default-title\"],\"showDefaultButtons\":[4,\"show-default-buttons\"],\"showClearButton\":[4,\"show-clear-button\"],\"showDefaultTimeLabel\":[4,\"show-default-time-label\"],\"hourCycle\":[1,\"hour-cycle\"],\"size\":[1],\"preferWheel\":[4,\"prefer-wheel\"],\"showMonthAndYear\":[32],\"activeParts\":[32],\"workingParts\":[32],\"isPresented\":[32],\"isTimePopoverOpen\":[32],\"confirm\":[64],\"reset\":[64],\"cancel\":[64]}],[34,\"ion-picker\",{\"overlayIndex\":[2,\"overlay-index\"],\"keyboardClose\":[4,\"keyboard-close\"],\"enterAnimation\":[16],\"leaveAnimation\":[16],\"buttons\":[16],\"columns\":[16],\"cssClass\":[1,\"css-class\"],\"duration\":[2],\"showBackdrop\":[4,\"show-backdrop\"],\"backdropDismiss\":[4,\"backdrop-dismiss\"],\"animated\":[4],\"htmlAttributes\":[16],\"presented\":[32],\"present\":[64],\"dismiss\":[64],\"onDidDismiss\":[64],\"onWillDismiss\":[64],\"getColumn\":[64]}],[32,\"ion-picker-column\",{\"col\":[16]}]]],[\"ion-action-sheet\",[[34,\"ion-action-sheet\",{\"overlayIndex\":[2,\"overlay-index\"],\"keyboardClose\":[4,\"keyboard-close\"],\"enterAnimation\":[16],\"leaveAnimation\":[16],\"buttons\":[16],\"cssClass\":[1,\"css-class\"],\"backdropDismiss\":[4,\"backdrop-dismiss\"],\"header\":[1],\"subHeader\":[1,\"sub-header\"],\"translucent\":[4],\"animated\":[4],\"htmlAttributes\":[16],\"present\":[64],\"dismiss\":[64],\"onDidDismiss\":[64],\"onWillDismiss\":[64]}]]],[\"ion-alert\",[[34,\"ion-alert\",{\"overlayIndex\":[2,\"overlay-index\"],\"keyboardClose\":[4,\"keyboard-close\"],\"enterAnimation\":[16],\"leaveAnimation\":[16],\"cssClass\":[1,\"css-class\"],\"header\":[1],\"subHeader\":[1,\"sub-header\"],\"message\":[1],\"buttons\":[16],\"inputs\":[1040],\"backdropDismiss\":[4,\"backdrop-dismiss\"],\"translucent\":[4],\"animated\":[4],\"htmlAttributes\":[16],\"present\":[64],\"dismiss\":[64],\"onDidDismiss\":[64],\"onWillDismiss\":[64]},[[4,\"keydown\",\"onKeydown\"]]]]],[\"ion-popover\",[[33,\"ion-popover\",{\"hasController\":[4,\"has-controller\"],\"delegate\":[16],\"overlayIndex\":[2,\"overlay-index\"],\"enterAnimation\":[16],\"leaveAnimation\":[16],\"component\":[1],\"componentProps\":[16],\"keyboardClose\":[4,\"keyboard-close\"],\"cssClass\":[1,\"css-class\"],\"backdropDismiss\":[4,\"backdrop-dismiss\"],\"event\":[8],\"showBackdrop\":[4,\"show-backdrop\"],\"translucent\":[4],\"animated\":[4],\"htmlAttributes\":[16],\"triggerAction\":[1,\"trigger-action\"],\"trigger\":[1],\"size\":[1],\"dismissOnSelect\":[4,\"dismiss-on-select\"],\"reference\":[1],\"side\":[1],\"alignment\":[1025],\"arrow\":[4],\"isOpen\":[4,\"is-open\"],\"keyboardEvents\":[4,\"keyboard-events\"],\"keepContentsMounted\":[4,\"keep-contents-mounted\"],\"presented\":[32],\"presentFromTrigger\":[64],\"present\":[64],\"dismiss\":[64],\"getParentPopover\":[64],\"onDidDismiss\":[64],\"onWillDismiss\":[64]}]]],[\"ion-checkbox\",[[33,\"ion-checkbox\",{\"color\":[513],\"name\":[1],\"checked\":[1028],\"indeterminate\":[1028],\"disabled\":[4],\"value\":[8]}]]],[\"ion-select_3\",[[33,\"ion-select\",{\"disabled\":[4],\"cancelText\":[1,\"cancel-text\"],\"okText\":[1,\"ok-text\"],\"placeholder\":[1],\"name\":[1],\"selectedText\":[1,\"selected-text\"],\"multiple\":[4],\"interface\":[1],\"interfaceOptions\":[8,\"interface-options\"],\"compareWith\":[1,\"compare-with\"],\"value\":[1032],\"isExpanded\":[32],\"open\":[64]}],[1,\"ion-select-option\",{\"disabled\":[4],\"value\":[8]}],[34,\"ion-select-popover\",{\"header\":[1],\"subHeader\":[1,\"sub-header\"],\"message\":[1],\"multiple\":[4],\"options\":[16]},[[0,\"ionChange\",\"onSelect\"]]]]],[\"ion-app_8\",[[0,\"ion-app\",{\"setFocus\":[64]}],[1,\"ion-content\",{\"color\":[513],\"fullscreen\":[4],\"forceOverscroll\":[1028,\"force-overscroll\"],\"scrollX\":[4,\"scroll-x\"],\"scrollY\":[4,\"scroll-y\"],\"scrollEvents\":[4,\"scroll-events\"],\"getScrollElement\":[64],\"scrollToTop\":[64],\"scrollToBottom\":[64],\"scrollByPoint\":[64],\"scrollToPoint\":[64]},[[8,\"appload\",\"onAppLoad\"]]],[36,\"ion-footer\",{\"collapse\":[1],\"translucent\":[4]}],[36,\"ion-header\",{\"collapse\":[1],\"translucent\":[4]}],[1,\"ion-router-outlet\",{\"mode\":[1025],\"delegate\":[16],\"animated\":[4],\"animation\":[16],\"swipeHandler\":[16],\"commit\":[64],\"setRouteId\":[64],\"getRouteId\":[64]}],[33,\"ion-title\",{\"color\":[513],\"size\":[1]}],[33,\"ion-toolbar\",{\"color\":[513]},[[0,\"ionStyle\",\"childrenStyle\"]]],[34,\"ion-buttons\",{\"collapse\":[4]}]]],[\"ion-spinner\",[[1,\"ion-spinner\",{\"color\":[513],\"duration\":[2],\"name\":[1],\"paused\":[4]}]]],[\"ion-item_8\",[[33,\"ion-item-divider\",{\"color\":[513],\"sticky\":[4]}],[32,\"ion-item-group\"],[1,\"ion-skeleton-text\",{\"animated\":[4]}],[32,\"ion-list\",{\"lines\":[1],\"inset\":[4],\"closeSlidingItems\":[64]}],[33,\"ion-list-header\",{\"color\":[513],\"lines\":[1]}],[49,\"ion-item\",{\"color\":[513],\"button\":[4],\"detail\":[4],\"detailIcon\":[1,\"detail-icon\"],\"disabled\":[4],\"download\":[1],\"fill\":[1],\"shape\":[1],\"href\":[1],\"rel\":[1],\"lines\":[1],\"counter\":[4],\"routerAnimation\":[16],\"routerDirection\":[1,\"router-direction\"],\"target\":[1],\"type\":[1],\"counterFormatter\":[16],\"multipleInputs\":[32],\"focusable\":[32],\"counterString\":[32]},[[0,\"ionChange\",\"handleIonChange\"],[0,\"ionColor\",\"labelColorChanged\"],[0,\"ionStyle\",\"itemStyle\"]]],[34,\"ion-label\",{\"color\":[513],\"position\":[1],\"noAnimate\":[32]}],[33,\"ion-note\",{\"color\":[513]}]]]]"), options);
   });
 };
 
@@ -17936,7 +17767,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "s": () => (/* binding */ safeCall),
 /* harmony export */   "t": () => (/* binding */ toastController)
 /* harmony export */ });
-/* harmony import */ var _Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+/* harmony import */ var _Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
 /* harmony import */ var _ionic_global_00475c3a_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ionic-global-00475c3a.js */ 537);
 /* harmony import */ var _hardware_back_button_490df115_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./hardware-back-button-490df115.js */ 159);
 /* harmony import */ var _helpers_4d272360_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./helpers-4d272360.js */ 9158);
@@ -17962,7 +17793,7 @@ const createController = tagName => {
     },
 
     getTop() {
-      return (0,_Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      return (0,_Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
         return getOverlay(document, tagName);
       })();
     }
@@ -18318,7 +18149,7 @@ const setRootAriaHidden = (hidden = false) => {
 };
 
 const present = /*#__PURE__*/function () {
-  var _ref = (0,_Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (overlay, name, iosEnterAnimation, mdEnterAnimation, opts) {
+  var _ref = (0,_Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (overlay, name, iosEnterAnimation, mdEnterAnimation, opts) {
     var _a, _b;
 
     if (overlay.presented) {
@@ -18381,7 +18212,7 @@ const present = /*#__PURE__*/function () {
 
 
 const focusPreviousElementOnDismiss = /*#__PURE__*/function () {
-  var _ref2 = (0,_Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (overlayEl) {
+  var _ref2 = (0,_Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (overlayEl) {
     let previousElement = document.activeElement;
 
     if (!previousElement) {
@@ -18405,7 +18236,7 @@ const focusPreviousElementOnDismiss = /*#__PURE__*/function () {
 }();
 
 const dismiss = /*#__PURE__*/function () {
-  var _ref3 = (0,_Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (overlay, data, role, name, iosLeaveAnimation, mdLeaveAnimation, opts) {
+  var _ref3 = (0,_Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (overlay, data, role, name, iosLeaveAnimation, mdLeaveAnimation, opts) {
     var _a, _b;
 
     if (!overlay.presented) {
@@ -18468,7 +18299,7 @@ const getAppRoot = doc => {
 };
 
 const overlayAnimation = /*#__PURE__*/function () {
-  var _ref4 = (0,_Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (overlay, animationBuilder, baseEl, opts) {
+  var _ref4 = (0,_Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (overlay, animationBuilder, baseEl, opts) {
     // Make overlay visible in case it's hidden
     baseEl.classList.remove('overlay-hidden');
     const aniRoot = overlay.el;

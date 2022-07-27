@@ -90,12 +90,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "HomePage": () => (/* binding */ HomePage)
 /* harmony export */ });
-/* harmony import */ var _Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
+/* harmony import */ var _Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 1670);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 4929);
 /* harmony import */ var _home_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home.page.html?ngResource */ 3853);
 /* harmony import */ var _home_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./home.page.scss?ngResource */ 1020);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 2560);
-/* harmony import */ var _awesome_cordova_plugins_wifi_wizard_2_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @awesome-cordova-plugins/wifi-wizard-2/ngx */ 5691);
+/* harmony import */ var _ionic_native_hotspot_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/hotspot/ngx */ 1542);
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 3819);
 
 
@@ -105,39 +105,51 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let HomePage = class HomePage {
-  constructor(wifiWizard2, platform) {
-    this.wifiWizard2 = wifiWizard2;
+  constructor(hotspot, platform, toastController) {
+    this.hotspot = hotspot;
     this.platform = platform;
-    this.ssids = [];
-    this.getNetworks();
+    this.toastController = toastController;
+    this.networks = [];
+    this.isloading = false;
+    this.isloading = true;
     this.platform.ready().then(() => {
-      this.wifiWizard2.scan().then(() => {
-        this.wifiWizard2.getScanResults({
-          numLevels: 2
-        }).then(res => {
-          this.ssids = res;
-        });
+      this.presentToast("SUCCESS: Device is Ready");
+      this.hotspot.scanWifi().then(networks => {
+        this.presentToast("ERROR: All networks founded");
+        this.networks = networks;
+        this.isloading = false;
+      }).catch(err => {
+        this.presentToast(JSON.stringify(err));
+        this.presentToast("ERROR: Cannot Scan WiFI");
+        this.isloading = false;
       });
+    }).catch(err => {
+      this.presentToast(JSON.stringify(err));
+      this.presentToast("ERROR: Device Not Ready");
+      this.isloading = false;
     });
   }
 
-  getNetworks() {
+  presentToast(message) {
     var _this = this;
 
-    return (0,_Users_moiz_Documents_test_wifi_cordova_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
-      try {
-        let results = yield _this.wifiWizard2.scan();
-        console.log(results);
-      } catch (error) {}
+    return (0,_Users_moiz_Documents_test_wifissid_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+      const toast = yield _this.toastController.create({
+        message: message,
+        duration: 2000
+      });
+      toast.present();
     })();
   }
 
 };
 
 HomePage.ctorParameters = () => [{
-  type: _awesome_cordova_plugins_wifi_wizard_2_ngx__WEBPACK_IMPORTED_MODULE_3__.WifiWizard2
+  type: _ionic_native_hotspot_ngx__WEBPACK_IMPORTED_MODULE_3__.Hotspot
 }, {
   type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.Platform
+}, {
+  type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.ToastController
 }];
 
 HomePage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Component)({
@@ -165,7 +177,7 @@ module.exports = "#container {\n  text-align: center;\n  position: absolute;\n  
   \************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header>\n    <ion-toolbar>\n        <ion-title>\n            List of Wifi SSIDs\n        </ion-title>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content>\n    <div class=\"ion-padding\">\n        <ion-list *ngFor=\"let ssid of ssids\">\n            <ion-item *ngIf=\"ssid.SSID !== ''\">{{ ssid.SSID }}</ion-item>\n        </ion-list>\n    </div>\n</ion-content>";
+module.exports = "<ion-header>\n    <ion-toolbar>\n        <ion-title> List of Wifi SSID </ion-title>\n    </ion-toolbar>\n</ion-header>\n<ion-content>\n    <div *ngIf=\"isloading\">\n        Loading....\n    </div>\n    <div *ngIf=\"!isloading\">\n        <ion-list *ngFor=\"let network of networks\">\n            <ion-item *ngIf=\"network.SSID != ''\">{{ network.SSID }}</ion-item>\n        </ion-list>\n    </div>\n</ion-content>";
 
 /***/ })
 
